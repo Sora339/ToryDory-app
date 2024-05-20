@@ -1,0 +1,520 @@
+<!-- 
+Tailwindのおまじない
+win
+cd \Users\xzhou\OneDrive - Aoyama Gakuin\授業\2024\2年前期\情報科学総合演習A\ToryDory
+npx tailwindcss -i src/style.css -o src/twind.css --watch
+mac
+cd /Users/nishiborisorachi/Library/CloudStorage/OneDrive-AoyamaGakuin/授業/2024/2年前期/情報科学総合演習A/ToryDory
+npx tailwindcss -i src/style.css -o src/twind.css --watch
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/twind.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <title>ホーム｜ToryDory</title>
+    <link rel="icon" href="image/marulogo.ico" />
+    <!-- <script type="text/javascript" src="home.js"></script> -->
+  </head>
+  <body class="bg-slate-300">
+    <div id="header" class="relative h-[56px]xl:h-[72px]">
+      <div>
+        <div class="bg-[#8ECAE6] h-5 xl:h-6"></div>
+        <div class="bg-[#219EBC] h-4 xl:h-5"></div>
+        <div class="bg-[#126782] h-3 xl:h-4"></div>
+        <div class="bg-[#023047] h-2 xl:h-3"></div>
+      </div>
+      <div
+        class="flex ml-1 mr-1 xl:ml-3 xl:mr-3 absolute top-1 xl:top-1 xl:left-0"
+      >
+        <img
+          src="image\header_logo_1.svg"
+          alt="ヘッダーロゴ"
+          class="h-10 xl:h-12"
+        />
+        <h1
+          class="text-4xl xl:text-5xl font-pattaya ml-1 xl:ml-2 pt-1 xl:pt-0 text-white"
+        >
+          ToryDory
+        </h1>
+        <img
+          src="image\header_island.svg"
+          alt="ヘッダー島"
+          class="h-10 xl:h-12 ml-2 xl:ml-3"
+        />
+      </div>
+    </div>
+    <div id="main" class="xl:m-4 mb-6 xl:mb-8">
+      <div class="xl:grid xl:grid-cols-2 xl:gap-4">
+        <div
+          id="set1"
+          class="container bg-[#e7e0ca] shadow-md rounded m-2 pt-1 pb-4 xl:pb-0 xl:pt-0 xl:m-0 h-fit"
+        >
+          <h2
+            class="text-[#023047] mt-2 xl:mt-4 ml-2 xl:ml-4 text-3xl xl:text-4xl font-pattaya h-8 xl:h-9"
+          >
+            Today's sailing
+          </h2>
+          <h4
+            class="text-[#023047] text-[80%] xl:text-[100%] font-nsjp font-medium ml-2 xl:ml-4"
+          >
+            今日のタスク
+          </h4>
+          <div class="xl:grid grid-cols-3 h-fit xl:h-[400px]">
+            <div
+              class="bg-[#219EBC] shadow-md rounded border-[#8ECAE6] border-4 m-3 xl:m-4 xl:mr-0"
+            >
+              <div class="flex xl:h-8">
+                <div>
+                  <h3
+                    class="text-[#023047] text-2xl xl:text-3xl mt-1 xl:mt-1 ml-1 xl:ml-1 font-pattaya h-7 xl:h-7"
+                  >
+                    ToDo
+                  </h3>
+                  <h4
+                    class="text-[#023047] text-[70%] xl:text-[70%] font-nsjp font-medium ml-1 xl:ml-2"
+                  >
+                    やる
+                  </h4>
+                </div>
+                <img
+                  class="h-10 xl:h-10 ml-1 xl:ml-1 mt-1 xl:mt-1"
+                  src="image/todaytask_todo.svg"
+                  alt="Todo"
+                />
+              </div>
+              <div
+                class="box bg-white h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
+                id="box1-1"
+                ondrop="drop(event)"
+                ondragover="allowDrop(event)"
+              >
+                <!-- ここにタスクが追加 -->
+              </div>
+            </div>
+            <div
+              class="bg-[#126782] shadow-md rounded border-[#219EBC] border-4 m-3 xl:m-4 xl:ml-2 xl:mr-2"
+            >
+              <div class="flex xl:h-8">
+                <div>
+                  <h3
+                    class="text-[#8ECAE6] text-2xl xl:text-3xl mt-1 xl:mt-1 ml-1 xl:ml-1 font-pattaya h-7 xl:h-7"
+                  >
+                    Doing
+                  </h3>
+                  <h4
+                    class="text-[#8ECAE6] text-[70%] xl:text-[70%] font-nsjp font-medium ml-1 xl:ml-2"
+                  >
+                    やっている
+                  </h4>
+                </div>
+                <img
+                  class="h-10 xl:h-10 ml-1 xl:ml-1 mt-1 xl:mt-1"
+                  src="image/todaytask_doing.svg"
+                  alt="doing"
+                />
+              </div>
+              <div
+                class="box bg-white h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
+                id="box2"
+                ondrop="drop(event)"
+                ondragover="allowDrop(event)"
+              ></div>
+            </div>
+            <div
+              class="bg-[#023047] shadow-md rounded border-[#126782] border-4 m-3 xl:m-4 xl:ml-0 xl:mr-4"
+            >
+              <div class="flex xl:h-8">
+                <div>
+                  <h3
+                    class="text-[#219EBC] text-2xl xl:text-3xl mt-1 xl:mt-1 ml-1 xl:ml-1 font-pattaya h-7 xl:h-7"
+                  >
+                    Done
+                  </h3>
+                  <h4
+                    class="text-[#219EBC] text-[70%] xl:text-[70%] font-nsjp font-medium ml-1 xl:ml-2"
+                  >
+                    やった
+                  </h4>
+                </div>
+                <img
+                  class="h-10 xl:h-10 ml-1 xl:ml-1 mt-1 xl:mt-1"
+                  src="image/todaytask_done.svg"
+                  alt="done"
+                />
+              </div>
+              <div
+                class="box bg-white h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
+                id="box3"
+                ondrop="drop(event)"
+                ondragover="allowDrop(event)"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="set2"
+          class="container bg-[#c8d5b9] shadow-md rounded m-2 pt-1 pb-4 xl:pb-0 xl:pt-0 xl:m-0 h-fit"
+        >
+          <h2
+            class="text-[#023047] mt-2 xl:mt-4 ml-2 xl:ml-4 text-3xl xl:text-4xl font-pattaya h-8 xl:h-9"
+          >
+            All sailing
+          </h2>
+          <h4
+            class="text-[#023047] text-[80%] xl:text-[100%] font-nsjp font-medium ml-2 xl:ml-4"
+          >
+            すべてのタスク
+          </h4>
+          <div class="xl:grid grid-cols-3 h-fit xl:h-[400px]">
+            <div
+              class="bg-[#219EBC] shadow-md rounded border-[#8ECAE6] border-4 m-3 xl:m-4 xl:mr-0"
+            >
+              <div class="flex xl:h-8">
+                <div>
+                  <h3
+                    class="text-[#023047] text-2xl xl:text-3xl mt-1 xl:mt-1 ml-1 xl:ml-1 font-pattaya h-7 xl:h-7"
+                  >
+                    ToDo
+                  </h3>
+                  <h4
+                    class="text-[#023047] text-[70%] xl:text-[70%] font-nsjp font-medium ml-1 xl:ml-2"
+                  >
+                    やる
+                  </h4>
+                </div>
+                <img
+                  class="h-10 xl:h-10 ml-1 xl:ml-1 mt-1 xl:mt-1"
+                  src="image/todaytask_todo.svg"
+                  alt="Todo"
+                />
+              </div>
+              <div
+                class="box bg-white h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
+                id="box2-1"
+                ondrop="drop(event)"
+                ondragover="allowDrop(event)"
+              >
+                <!-- ここにタスクが追加 -->
+              </div>
+            </div>
+            <div
+              class="bg-[#126782] shadow-md rounded border-[#219EBC] border-4 m-3 xl:m-4 xl:ml-2 xl:mr-2"
+            >
+              <div class="flex xl:h-8">
+                <div>
+                  <h3
+                    class="text-[#8ECAE6] text-2xl xl:text-3xl mt-1 xl:mt-1 ml-1 xl:ml-1 font-pattaya h-7 xl:h-7"
+                  >
+                    Doing
+                  </h3>
+                  <h4
+                    class="text-[#8ECAE6] text-[70%] xl:text-[70%] font-nsjp font-medium ml-1 xl:ml-2"
+                  >
+                    やっている
+                  </h4>
+                </div>
+                <img
+                  class="h-10 xl:h-10 ml-1 xl:ml-1 mt-1 xl:mt-1"
+                  src="image/todaytask_doing.svg"
+                  alt="Todo"
+                />
+              </div>
+              <div
+                class="box bg-white h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
+                id="box2-2"
+                ondrop="drop(event)"
+                ondragover="allowDrop(event)"
+              ></div>
+            </div>
+            <div
+              class="bg-[#023047] shadow-md rounded border-[#126782] border-4 m-3 xl:m-4 xl:ml-0 xl:mr-4"
+            >
+              <div class="flex xl:h-8">
+                <div>
+                  <h3
+                    class="text-[#219EBC] text-2xl xl:text-3xl mt-1 xl:mt-1 ml-1 xl:ml-1 font-pattaya h-7 xl:h-7"
+                  >
+                    Done
+                  </h3>
+                  <h4
+                    class="text-[#219EBC] text-[70%] xl:text-[70%] font-nsjp font-medium ml-1 xl:ml-2"
+                  >
+                    やった
+                  </h4>
+                </div>
+                <img
+                  class="h-10 xl:h-10 ml-1 xl:ml-1 mt-1 xl:mt-1"
+                  src="image/todaytask_done.svg"
+                  alt="Todo"
+                />
+              </div>
+              <div
+                class="box bg-white h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
+                id="box2-3"
+                ondrop="drop(event)"
+                ondragover="allowDrop(event)"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div
+          id="make_task"
+          class="bg-[#8fc0a9] shadow-md m-2 pt-1 pb-4 xl:pb-0 xl:pt-0 xl:m-0 rounded h-fit"
+        >
+          <h2
+            class="text-[#023047] mt-2 xl:mt-4 ml-2 xl:ml-4 text-3xl xl:text-4xl font-pattaya h-8 xl:h-9"
+          >
+            Make sailing schedules
+          </h2>
+          <h4
+            class="text-[#023047] text-[80%] xl:text-[100%] font-nsjp font-medium ml-2 xl:ml-4"
+          >
+            タスク作成
+          </h4>
+          <div class="relative">
+            <img
+              src="image/maketask.svg"
+              alt="maketask_top"
+              class="shadow-md m-3 mb-2 xl:m-4 border-white border-4 rounded"
+            />
+            <div
+              class="absolute w-[21vh] xl:w-[100%] scale-75 xl:scale-100 top-0 xl:top-14 bottom-24 xl:bottom-0 right-10 xl:right-0 left-auto xl:left-[54%]"
+            >
+              <h3
+                class="font-nsjp font-semibold xl:mb-1 text-sm xl:text-2xl text-[#023047]"
+              >
+                タスク名
+              </h3>
+              <input
+                type="text"
+                class="border-4 shadow border-slate-600 w-[120%] xl:w-[16vw] rounded"
+                id="taskname"
+              />
+              <h3
+                class="font-nsjp font-semibold xl:mb-1 text-sm xl:text-2xl text-[#023047]"
+              >
+                完了日時
+              </h3>
+              <input
+                type="text"
+                class="border-4 shadow border-slate-600 w-[120%] xl:w-[16vw] rounded"
+                id="deadline"
+              />
+              <h3
+                class="font-nsjp font-semibold xl:mb-1 text-sm xl:text-2xl text-[#023047]"
+              >
+                重要度
+              </h3>
+              <input
+                type="text"
+                class="border-4 shadow border-slate-600 w-[120%] xl:w-[16vw] rounded"
+                id="importance"
+              />
+            </div>
+          </div>
+          <button
+            class="block shadow-md xl:hidden w-fit ml-auto mr-auto p-[0.1vw] pl-[4vw] pr-[4vw] pt-0 bg-[#FFB703] border-4 border-[#FB8500] font-nsjp font-semibold text-[#023047] rounded"
+            onclick="addTask()"
+          >
+            作成
+          </button>
+          <div class="relative">
+            <button
+              class="hidden shadow-md xl:block absolute top-auto xl:bottom-10 xl:left-0 xl:right-0 xl:w-fit xl:ml-auto xl:mr-auto xl:p-[0.1vw] xl:pl-[2vw] xl:pr-[2vw] xl:pt-0 bg-[#FFB703] border-4 border-[#FB8500] text-[1.5vw] font-nsjp font-semibold text-[#023047] rounded"
+              onclick="addTask()"
+            >
+              作成
+            </button>
+          </div>
+        </div>
+        <div
+          id="make_logs"
+          class="bg-[#68b0ab] shadow-md m-2 pt-1 pb-4 xl:pb-0 xl:pt-0 xl:m-0 rounded h-fit"
+        >
+          <h2
+            class="text-[#023047] mt-2 xl:mt-4 ml-2 xl:ml-4 text-3xl xl:text-4xl font-pattaya h-8 xl:h-9"
+          >
+            Make ship’s logs
+          </h2>
+          <h4
+            class="text-[#023047] text-[80%] xl:text-[100%] font-nsjp font-medium ml-2 xl:ml-4"
+          >
+            日記作成
+          </h4>
+          <div class="relative">
+            <img
+              src="image/makelog.svg"
+              alt="maketask_top"
+              class="shadow-md m-3 mb-2 xl:m-4 border-white border-4 rounded"
+            />
+            <div
+              class="scale-75 xl:scale-100 absolute top-0 xl:top-6 bottom-16 xl:bottom-0 right-2 xl:right-24 left-auto xl:left-auto"
+            >
+              <h3
+                class="font-nsjp font-semibold mb-1 xl:text-2xl text-[#023047]"
+              >
+                今日完了したタスク
+              </h3>
+              <div
+                class="h-[15vh] xl:h-[60%] w-[50vw] xl:w-[16vw] bg-white rounded"
+              ></div>
+            </div>
+          </div>
+          <div class="text-center">
+            <a href="alllogs.html">
+              <button
+                class="xl:hidden shadow-md w-fit ml-auto pl-[2vw] pr-[2vw] bg-[#8ECAE6] border-4 border-white font-nsjp font-semibold text-[#023047] rounded"
+              >
+                すべての日記
+              </button>
+            </a>
+            <a href="makelog.html">
+              <button
+                class="xl:hidden shadow-md w-fit mr-auto ml-8 pl-[2vw] pr-[2vw] bg-[#FFB703] border-4 border-[#FB8500] font-nsjp font-semibold text-[#023047] rounded"
+              >
+                日記の作成
+              </button>
+            </a>
+          </div>
+          <div class="relative">
+            <a href="makelog.html">
+              <button
+                class="hidden shadow-md xl:block absolute top-auto xl:bottom-10 left-auto xl:right-56 w-fit ml-auto mr-auto xl:p-[0.1vw] xl:pl-[1vw] xl:pr-[1vw] xl:pt-0 bg-[#FFB703] xl:border-4 border-[#FB8500] xl:text-[1.5vw] font-nsjp font-semibold text-[#023047] rounded"
+              >
+                日記の作成
+              </button>
+            </a>
+            <a href="alllogs.html">
+              <button
+                class="hidden shadow-md xl:block absolute top-auto xl:bottom-10 xl:left-56 right-auto w-fit ml-auto mr-auto xl:p-[0.1vw] xl:pl-[1vw] xl:pr-[1vw] pt-0 bg-[#8ECAE6] xl:border-4 border-white xl:text-[1.5vw] font-nsjp font-semibold text-[#023047] rounded"
+              >
+                すべての日記
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer" class="flex items-center w-fit mx-auto mb-4">
+      <img
+        src="image/marulogo.svg"
+        alt="marulogo"
+        class="h-6 xl:h-8 mr-1 xl:mr-2"
+      />
+      <p class="text-center text-[#023047] font-nsjp text-[50%] xl:text-[100%]">
+        ©2024 Nishibori Sorachi All rights reserved.
+      </p>
+    </div>
+  </body>
+</html>
+
+<script>
+  let state1 = null; //異なるセット間でD&Dを禁止するためにドラッグ元の親idを保持
+
+  function allowDrop(event) {
+    console.log("allowDrop");
+    event.preventDefault();
+    // Get the set ID of the dragged element
+    // let draggedSetId = event.dataTransfer.getData("setId");
+    // Get the set ID of the current drop target
+    let dropTargetSetId = event.target.closest(".container").id;
+    console.log(state1);
+    console.log(dropTargetSetId);
+
+    // Allow drop only if the target set is the same as the dragged element's set
+    if (state1 === dropTargetSetId) {
+      event.dataTransfer.dropEffect = "move";
+    } else {
+      event.dataTransfer.dropEffect = "none";
+    }
+  }
+
+  function drag(event) {
+    let statechange = 0;
+    console.log("drag");
+    event.dataTransfer.setData("text", event.target.id);
+    // Store the set ID to prevent cross-set drops
+    event.dataTransfer.setData("setId", event.target.closest(".container").id);
+    // console.log(event.dataTransfer.getData("setId"));
+    state1 = event.target.closest(".container").id;
+    statechange = 1;
+  }
+
+  function drop(event) {
+    event.preventDefault();
+    let data = event.dataTransfer.getData("text");
+    let setId = event.dataTransfer.getData("setId");
+    console.log(setId);
+    let element = document.getElementById(data);
+
+    // Get the target element
+    let target = event.target;
+
+    // If the target is not a box, find the closest parent box
+    while (!target.classList.contains("box") && target.parentElement) {
+      target = target.parentElement;
+    }
+
+    // Append the dragged element to the target box only if it's in the same set
+    if (
+      target.classList.contains("box") &&
+      target.closest(".container").id === setId
+    ) {
+      target.appendChild(element);
+    }
+  }
+
+  function addTask() {
+    //タスク追加機能
+    const taskname = document.getElementById("taskname");
+    const deadline = document.getElementById("deadline");
+    const importance = document.getElementById("importance");
+    const taskbox = document.getElementById("box2-1");
+    const tasknamevalue = taskname.value;
+    const newtask = document.createElement("div");
+    newtask.textContent = tasknamevalue;
+    newtask.setAttribute(
+      "class",
+      "flex group item p-[5px] border-[1px] border-solid border-[#000] cursor-grab bg-[#f0f0f0] rounded xl:relative"
+    );
+    newtask.setAttribute("id", "item9");
+    newtask.setAttribute("draggable", "true");
+    newtask.setAttribute("ondragstart", "drag(event)");
+    const deleteButton = document.createElement("span");
+    deleteButton.textContent = "delete";
+    deleteButton.setAttribute(
+      "class",
+      "deleteButton material-symbols-outlined invisible group-hover:visible xl:absolute xl:top-auto xl:bottom-auto xl:left-48 xl:right-0"
+    );
+    deleteButton.setAttribute("id", "deleteButton9");
+    deleteButton.setAttribute("type", "button");
+    deleteButton.setAttribute("onclick", "removeTask(this)");
+    newtask.appendChild(deleteButton);
+    taskbox.appendChild(newtask);
+    console.log(taskname.value);
+    console.log(deadline.value);
+    console.log(importance.value);
+  }
+  function removeTask(e) {
+    //タスク削除機能
+    e.parentElement.remove();
+  }
+</script>

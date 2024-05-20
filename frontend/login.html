@@ -1,0 +1,75 @@
+<!-- 
+Tailwindのおまじない
+win
+cd \Users\xzhou\OneDrive - Aoyama Gakuin\授業\2024\2年前期\情報科学総合演習A\ToryDory
+npx tailwindcss -i src/style.css -o src/twind.css --watch
+mac
+cd /Users/nishiborisorachi/Library/CloudStorage/OneDrive-AoyamaGakuin/授業/2024/2年前期/情報科学総合演習A/ToryDory
+npx tailwindcss -i src/style.css -o src/twind.css --watch
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/twind.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>ログイン｜ToryDory</title>
+    <link rel="icon" href="image/marulogo.ico" />
+  </head>
+  <body class="bg-slate-300">
+    <div id="header" class="relative h-[56px]xl:h-[72px]">
+      <div>
+        <div class="bg-[#8ECAE6] h-5 xl:h-6"></div>
+        <div class="bg-[#219EBC] h-4 xl:h-5"></div>
+        <div class="bg-[#126782] h-3 xl:h-4"></div>
+        <div class="bg-[#023047] h-2 xl:h-3"></div>
+      </div>
+      <div
+        class="flex ml-1 mr-1 xl:ml-3 xl:mr-3 absolute top-1 xl:top-1 xl:left-0"
+      >
+        <img
+          src="image\header_logo_1.svg"
+          alt="ヘッダーロゴ"
+          class="h-10 xl:h-12"
+        />
+        <h1
+          class="text-4xl xl:text-5xl font-pattaya ml-1 xl:ml-2 pt-1 xl:pt-0 text-white"
+        >
+          ToryDory
+        </h1>
+        <img
+          src="image\header_island.svg"
+          alt="ヘッダー島"
+          class="h-10 xl:h-12 ml-2 xl:ml-3"
+        />
+      </div>
+    </div>
+    <div id="main" class="mb-6 xl:mb-8">
+      <div class="w-full">
+        <img src="image\Hero.svg" alt="ヒーロー画像" />
+      </div>
+    </div>
+    <div id="footer" class="flex items-center w-fit mx-auto mb-4">
+      <img
+        src="image/marulogo.svg"
+        alt="marulogo"
+        class="h-6 xl:h-8 mr-1 xl:mr-2"
+      />
+      <p class="text-center text-[#023047] font-nsjp text-[50%] xl:text-[100%]">
+        ©2024 Nishibori Sorachi All rights reserved.
+      </p>
+    </div>
+  </body>
+</html>
