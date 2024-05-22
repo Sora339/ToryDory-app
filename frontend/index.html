@@ -1,11 +1,7 @@
 <!-- 
 Tailwindのおまじない
-win
-cd \Users\xzhou\OneDrive - Aoyama Gakuin\授業\2024\2年前期\情報科学総合演習A\ToryDory
-npx tailwindcss -i src/style.css -o src/twind.css --watch
-mac
-cd /Users/nishiborisorachi/Library/CloudStorage/OneDrive-AoyamaGakuin/授業/2024/2年前期/情報科学総合演習A/ToryDory
-npx tailwindcss -i src/style.css -o src/twind.css --watch
+cd frontend
+npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
 -->
 
 <!DOCTYPE html>
@@ -31,7 +27,9 @@ npx tailwindcss -i src/style.css -o src/twind.css --watch
     />
     <title>ホーム｜ToryDory</title>
     <link rel="icon" href="image/marulogo.ico" />
-    <!-- <script type="text/javascript" src="home.js"></script> -->
+
+    <script type="text/javascript" src="/js/general.js"></script>
+    <script type="text/javascript" src="/js/api.js"></script>
   </head>
   <body class="bg-slate-300">
     <div id="header" class="relative h-[56px]xl:h-[72px]">
@@ -65,7 +63,7 @@ npx tailwindcss -i src/style.css -o src/twind.css --watch
       <div class="xl:grid xl:grid-cols-2 xl:gap-4">
         <div
           id="set1"
-          class="container bg-[#e7e0ca] shadow-md rounded m-2 pt-1 pb-4 xl:pb-0 xl:pt-0 xl:m-0 h-fit"
+          class="container bg-[#e7e0ca] shadow-md rounded w-auto m-2 pt-1 pb-4 xl:pb-0 xl:pt-0 xl:m-0 h-fit"
         >
           <h2
             class="text-[#023047] mt-2 xl:mt-4 ml-2 xl:ml-4 text-3xl xl:text-4xl font-pattaya h-8 xl:h-9"
@@ -171,7 +169,7 @@ npx tailwindcss -i src/style.css -o src/twind.css --watch
         </div>
         <div
           id="set2"
-          class="container bg-[#c8d5b9] shadow-md rounded m-2 pt-1 pb-4 xl:pb-0 xl:pt-0 xl:m-0 h-fit"
+          class="container bg-[#c8d5b9] shadow-md rounded w-auto m-2 pt-1 pb-4 xl:pb-0 xl:pt-0 xl:m-0 h-fit"
         >
           <h2
             class="text-[#023047] mt-2 xl:mt-4 ml-2 xl:ml-4 text-3xl xl:text-4xl font-pattaya h-8 xl:h-9"
@@ -427,6 +425,18 @@ npx tailwindcss -i src/style.css -o src/twind.css --watch
 </html>
 
 <script>
+  // ログインしていない場合、ログインページに移動
+  if (!checkLogin()) {
+    handleLoginError();
+  }
+
+  // ユーザー情報を取得
+  getMeApi().then((data) => {
+    console.log("data:", data);
+    const welcomeH1 = document.getElementById("welcome");
+    welcomeH1.innerText = `ようこそ、${data.nickname}さん`;
+  });
+
   let state1 = null; //異なるセット間でD&Dを禁止するためにドラッグ元の親idを保持
 
   function allowDrop(event) {
@@ -489,8 +499,25 @@ npx tailwindcss -i src/style.css -o src/twind.css --watch
     const importance = document.getElementById("importance");
     const taskbox = document.getElementById("box2-1");
     const tasknamevalue = taskname.value;
+    const deadlinevalue = deadline.value;
+    console.log(deadlinevalue);
     const newtask = document.createElement("div");
     newtask.textContent = tasknamevalue;
+    if (!taskname) {
+      tasknamevalue.innerText = "タイトルを入力してください";
+      return;
+    }
+    const taskData = {
+      title: tasknamevalue,
+      due_date: deadlinevalue ? deadlinevalue : null,
+    };
+    console.log("taskData:", taskData);
+    createTaskApi(taskData).then((data) => {
+      console.log("data:", data);
+      alert("タスクを作成しました");
+      // location.href = '/index.html'
+    });
+
     newtask.setAttribute(
       "class",
       "flex group item p-[5px] border-[1px] border-solid border-[#000] cursor-grab bg-[#f0f0f0] rounded xl:relative"
