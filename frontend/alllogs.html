@@ -1,11 +1,7 @@
 <!-- 
 Tailwindのおまじない
-win
-cd \Users\xzhou\OneDrive - Aoyama Gakuin\授業\2024\2年前期\情報科学総合演習A\ToryDory
-npx tailwindcss -i src/style.css -o src/twind.css --watch
-mac
-cd /Users/nishiborisorachi/Library/CloudStorage/OneDrive-AoyamaGakuin/授業/2024/2年前期/情報科学総合演習A/ToryDory
-npx tailwindcss -i src/style.css -o src/twind.css --watch
+cd frontend
+npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
 -->
 
 <!DOCTYPE html>
@@ -27,6 +23,9 @@ npx tailwindcss -i src/style.css -o src/twind.css --watch
     />
     <title>日記一覧｜ToryDory</title>
     <link rel="icon" href="image/marulogo.ico" />
+
+    <script type="text/javascript" src="/js/general.js"></script>
+    <script type="text/javascript" src="/js/api.js"></script>
   </head>
   <body class="bg-slate-300">
     <div id="header" class="relative h-[56px] xl:h-[72px]">
@@ -151,4 +150,17 @@ npx tailwindcss -i src/style.css -o src/twind.css --watch
       </p>
     </div>
   </body>
+
+  <script>
+    if (!checkLogin()) {
+      handleLoginError();
+    }
+
+    // ユーザー情報を取得
+    getMeApi().then((data) => {
+      console.log("data:", data);
+      const welcomeH1 = document.getElementById("welcome");
+      welcomeH1.innerText = `ようこそ、${data.nickname}さん`;
+    });
+  </script>
 </html>

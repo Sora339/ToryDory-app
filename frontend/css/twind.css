@@ -670,6 +670,10 @@ html {
   bottom: 0px;
 }
 
+.bottom-12{
+  bottom: 3rem;
+}
+
 .bottom-16{
   bottom: 4rem;
 }
@@ -700,6 +704,10 @@ html {
 
 .right-10{
   right: 2.5rem;
+}
+
+.right-16{
+  right: 4rem;
 }
 
 .right-2{
@@ -875,8 +883,16 @@ html {
   margin-top: 0.5rem;
 }
 
+.mt-6{
+  margin-top: 1.5rem;
+}
+
 .mt-8{
   margin-top: 2rem;
+}
+
+.mt-4{
+  margin-top: 1rem;
 }
 
 .box-border{
@@ -1079,6 +1095,10 @@ html {
   width: weird-and-invalid;
 }
 
+.w-auto{
+  width: auto;
+}
+
 .w-fit{
   width: -moz-fit-content;
   width: fit-content;
@@ -1128,6 +1148,12 @@ html {
   border-collapse: separate;
 }
 
+.scale-100{
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .scale-50{
   --tw-scale-x: .5;
   --tw-scale-y: .5;
@@ -1137,6 +1163,12 @@ html {
 .scale-75{
   --tw-scale-x: .75;
   --tw-scale-y: .75;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-125{
+  --tw-scale-x: 1.25;
+  --tw-scale-y: 1.25;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -2304,6 +2336,10 @@ html {
   padding-bottom: 0.125rem;
 }
 
+.pb-1{
+  padding-bottom: 0.25rem;
+}
+
 .pb-4{
   padding-bottom: 1rem;
 }
@@ -2314,6 +2350,10 @@ html {
 
 .pl-2{
   padding-left: 0.5rem;
+}
+
+.pl-\[1vw\]{
+  padding-left: 1vw;
 }
 
 .pl-\[2vw\]{
@@ -2330,6 +2370,10 @@ html {
 
 .pr-2{
   padding-right: 0.5rem;
+}
+
+.pr-\[1vw\]{
+  padding-right: 1vw;
 }
 
 .pr-\[2vw\]{
@@ -2460,6 +2504,11 @@ html {
   line-height: 1.25rem;
 }
 
+.text-xl{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 .font-bold{
   font-weight: 700;
 }
@@ -2562,6 +2611,11 @@ html {
 .text-blue-500{
   --tw-text-opacity: 1;
   color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
+.text-slate-800{
+  --tw-text-opacity: 1;
+  color: rgb(30 41 59 / var(--tw-text-opacity));
 }
 
 .text-white{
@@ -3036,6 +3090,10 @@ html {
     bottom: 2.5rem;
   }
 
+  .xl\:bottom-20{
+    bottom: 5rem;
+  }
+
   .xl\:bottom-\[22\%\]{
     bottom: 22%;
   }
@@ -3058,6 +3116,10 @@ html {
 
   .xl\:left-\[54\%\]{
     left: 54%;
+  }
+
+  .xl\:left-\[62\%\]{
+    left: 62%;
   }
 
   .xl\:left-auto{
@@ -3106,6 +3168,10 @@ html {
 
   .xl\:top-auto{
     top: auto;
+  }
+
+  .xl\:bottom-16{
+    bottom: 4rem;
   }
 
   .xl\:m-0{
@@ -3362,6 +3428,12 @@ html {
   .xl\:scale-125{
     --tw-scale-x: 1.25;
     --tw-scale-y: 1.25;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
+
+  .xl\:scale-150{
+    --tw-scale-x: 1.5;
+    --tw-scale-y: 1.5;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
