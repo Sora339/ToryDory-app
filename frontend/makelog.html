@@ -65,7 +65,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         <div class="xl:ml-4 xl:mr-4 xl:mt-2 pt-2 xl:pt-4">
           <div class="ml-2 xl:ml-4 mb-2 xl:mb-4">
             <h2
-              class="text-[#023047] text-[170%] xl:text-[300%] font-pattaya h-8 xl:h-14"
+              class="text-[#023047] text-[170%] xl:text-[300%] font-pattaya h-8 xl:h-16"
             >
               Make ship's log
             </h2>
@@ -158,12 +158,19 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
               今日の日記
             </p>
             <div
-              class="h-32 xl:h-80 bg-white ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
+              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
             >
+              <div class="bg-slate-300 w-[50%]">
+                <!-- <img
+                  src="image\IMG_7834.jpg"
+                  alt="Tailwind_logo"
+                  class="h-full object-contain ml-auto mr-auto"
+                /> -->
+              </div>
               <textarea
                 name="todo1"
                 id="todo1"
-                class="border-4 border-slate-600 shadow-md h-full xl:h-full w-full xl:w-full"
+                class="shadow-md h-full xl:h-full w-full"
               ></textarea>
             </div>
           </div>
@@ -212,4 +219,5 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       welcomeH1.innerText = `ようこそ、${data.nickname}さん`;
     });
   </script>
+  
 </html>
