@@ -1,3 +1,6 @@
+# author
+frontend/js/secret_key.js
+
 static/
 book_fastapi_sample/
 .vscode/
