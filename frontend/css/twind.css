@@ -670,18 +670,6 @@ html {
   bottom: 0px;
 }
 
-.bottom-12{
-  bottom: 3rem;
-}
-
-.bottom-16{
-  bottom: 4rem;
-}
-
-.bottom-24{
-  bottom: 6rem;
-}
-
 .bottom-\[70\%\]{
   bottom: 70%;
 }
@@ -700,18 +688,6 @@ html {
 
 .right-0{
   right: 0px;
-}
-
-.right-10{
-  right: 2.5rem;
-}
-
-.right-16{
-  right: 4rem;
-}
-
-.right-2{
-  right: 0.5rem;
 }
 
 .right-\[90px\]{
@@ -847,6 +823,14 @@ html {
   margin-left: 2rem;
 }
 
+.ml-\[15\%\]{
+  margin-left: 15%;
+}
+
+.ml-\[58\%\]{
+  margin-left: 58%;
+}
+
 .ml-auto{
   margin-left: auto;
 }
@@ -891,8 +875,12 @@ html {
   margin-top: 2rem;
 }
 
-.mt-4{
-  margin-top: 1rem;
+.mt-\[15px\]{
+  margin-top: 15px;
+}
+
+.mt-\[50px\]{
+  margin-top: 50px;
 }
 
 .box-border{
@@ -1038,6 +1026,10 @@ html {
   height: 2rem;
 }
 
+.h-\[148px\]{
+  height: 148px;
+}
+
 .h-\[15vh\]{
   height: 15vh;
 }
@@ -1075,12 +1067,24 @@ html {
   width: 21vh;
 }
 
+.w-\[400px\]{
+  width: 400px;
+}
+
+.w-\[50\%\]{
+  width: 50%;
+}
+
 .w-\[50vw\]{
   width: 50vw;
 }
 
 .w-\[75vw\]{
   width: 75vw;
+}
+
+.w-\[\]{
+  width: ;
 }
 
 .w-\[this-is\\\\\]{
@@ -1163,12 +1167,6 @@ html {
 .scale-75{
   --tw-scale-x: .75;
   --tw-scale-y: .75;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.scale-125{
-  --tw-scale-x: 1.25;
-  --tw-scale-y: 1.25;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -2040,6 +2038,10 @@ html {
   border-width: 1px;
 }
 
+.border-2{
+  border-width: 2px;
+}
+
 .border-4{
   border-width: 4px;
 }
@@ -2206,6 +2208,32 @@ html {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-\[url\(\'\.\.\/image\/makelog\.svg\'\)\]{
+  background-image: url('../image/makelog.svg');
+}
+
+.bg-\[url\(\'\.\.\/image\/maketask\.svg\'\)\]{
+  background-image: url('../image/maketask.svg');
+}
+
+.bg-gradient-to-r{
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.bg-gradient-to-b{
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+
+.from-cyan-500{
+  --tw-gradient-from: #06b6d4 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(6 182 212 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-blue-500{
+  --tw-gradient-to: #3b82f6 var(--tw-gradient-to-position);
+}
+
 .decoration-slice{
   -webkit-box-decoration-break: slice;
           box-decoration-break: slice;
@@ -2224,6 +2252,10 @@ html {
 .box-decoration-clone{
   -webkit-box-decoration-break: clone;
           box-decoration-break: clone;
+}
+
+.bg-cover{
+  background-size: cover;
 }
 
 .bg-fixed{
@@ -2348,6 +2380,10 @@ html {
   padding-bottom: 1.5rem;
 }
 
+.pl-1{
+  padding-left: 0.25rem;
+}
+
 .pl-2{
   padding-left: 0.5rem;
 }
@@ -2366,6 +2402,10 @@ html {
 
 .pl-\[4vw\]{
   padding-left: 4vw;
+}
+
+.pr-1{
+  padding-right: 0.25rem;
 }
 
 .pr-2{
@@ -2611,6 +2651,11 @@ html {
 .text-blue-500{
   --tw-text-opacity: 1;
   color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
+.text-red-600{
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
 .text-slate-800{
@@ -3090,10 +3135,6 @@ html {
     bottom: 2.5rem;
   }
 
-  .xl\:bottom-20{
-    bottom: 5rem;
-  }
-
   .xl\:bottom-\[22\%\]{
     bottom: 22%;
   }
@@ -3114,24 +3155,12 @@ html {
     left: 14rem;
   }
 
-  .xl\:left-\[54\%\]{
-    left: 54%;
-  }
-
-  .xl\:left-\[62\%\]{
-    left: 62%;
-  }
-
   .xl\:left-auto{
     left: auto;
   }
 
   .xl\:right-0{
     right: 0px;
-  }
-
-  .xl\:right-24{
-    right: 6rem;
   }
 
   .xl\:right-56{
@@ -3150,14 +3179,6 @@ html {
     top: 0.25rem;
   }
 
-  .xl\:top-14{
-    top: 3.5rem;
-  }
-
-  .xl\:top-6{
-    top: 1.5rem;
-  }
-
   .xl\:top-\[22\%\]{
     top: 22%;
   }
@@ -3168,10 +3189,6 @@ html {
 
   .xl\:top-auto{
     top: auto;
-  }
-
-  .xl\:bottom-16{
-    bottom: 4rem;
   }
 
   .xl\:m-0{
@@ -3230,6 +3247,10 @@ html {
     margin-left: 0.5rem;
   }
 
+  .xl\:ml-20{
+    margin-left: 5rem;
+  }
+
   .xl\:ml-28{
     margin-left: 7rem;
   }
@@ -3260,6 +3281,10 @@ html {
 
   .xl\:mr-2{
     margin-right: 0.5rem;
+  }
+
+  .xl\:mr-20{
+    margin-right: 5rem;
   }
 
   .xl\:mr-28{
@@ -3330,6 +3355,10 @@ html {
     height: 3.5rem;
   }
 
+  .xl\:h-16{
+    height: 4rem;
+  }
+
   .xl\:h-3{
     height: 0.75rem;
   }
@@ -3366,16 +3395,20 @@ html {
     height: 2.25rem;
   }
 
+  .xl\:h-\[210px\]{
+    height: 210px;
+  }
+
   .xl\:h-\[280px\]{
     height: 280px;
   }
 
-  .xl\:h-\[400px\]{
-    height: 400px;
+  .xl\:h-\[370px\]{
+    height: 370px;
   }
 
-  .xl\:h-\[60\%\]{
-    height: 60%;
+  .xl\:h-\[400px\]{
+    height: 400px;
   }
 
   .xl\:h-\[72px\]{
@@ -3390,8 +3423,20 @@ html {
     height: 100%;
   }
 
-  .xl\:w-\[100\%\]{
-    width: 100%;
+  .xl\:h-1{
+    height: 0.25rem;
+  }
+
+  .xl\:h-20{
+    height: 5rem;
+  }
+
+  .xl\:h-\[\]{
+    height: ;
+  }
+
+  .xl\:h-\[72\]{
+    height: 72;
   }
 
   .xl\:w-\[16vw\]{
@@ -3428,12 +3473,6 @@ html {
   .xl\:scale-125{
     --tw-scale-x: 1.25;
     --tw-scale-y: 1.25;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-  }
-
-  .xl\:scale-150{
-    --tw-scale-x: 1.5;
-    --tw-scale-y: 1.5;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
@@ -3527,6 +3566,11 @@ html {
 
   .xl\:text-\[70\%\]{
     font-size: 70%;
+  }
+
+  .xl\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 
   .xl\:font-medium{

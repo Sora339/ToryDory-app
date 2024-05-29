@@ -37,11 +37,14 @@ def get_task_with_done(
             task_model.Task.id,
             task_model.Task.title,
             task_model.Task.due_date,
+            task_model.Task.importance,
             task_model.Task.user_id,
             task_model.Task.img_path,
+            # task_model.Doing.id.isnot(None).label("doing"),
             task_model.Done.id.isnot(None).label("done"),
         )
         .filter(task_model.Task.id == task_id)
+        # .outerjoin(task_model.Doing)
         .outerjoin(task_model.Done)
     )
     return result.first()
@@ -56,8 +59,10 @@ def get_multiple_tasks_with_done(
             task_model.Task.id,
             task_model.Task.title,
             task_model.Task.due_date,
+            task_model.Task.importance,
             task_model.Task.user_id,
             task_model.Done.id.isnot(None).label("done"),
+            # task_model.Doing.id.isnot(None).label("doing"),
         )
         .filter(task_model.Task.user_id == user_id)
         .outerjoin(task_model.Done)

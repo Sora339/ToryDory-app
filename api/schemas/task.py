@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field
 class TaskBase(BaseModel):
     title: str = Field(..., example="クリーニングを取りに行く")
     due_date: datetime.date | None = Field(None, example="2024-12-01")
+    importance: str = Field(..., example="最高")
 
 
 class TaskCreate(TaskBase):
@@ -27,6 +28,7 @@ class TaskCreateResponse(TaskCreate):
 class TaskApiUpdate(BaseModel):
     title: str | None
     due_date: datetime.date | None
+    importance: str | None
 
 
 class TaskDBUpdate(TaskApiUpdate):
@@ -34,4 +36,5 @@ class TaskDBUpdate(TaskApiUpdate):
 
 
 class Task(TaskCreateResponse):
-    done: bool = Field(False, description="完了フラグ")
+    done: bool = Field(False, description="完了フラグ") 
+    # doing: bool = Field(False, description="実行中フラグ")

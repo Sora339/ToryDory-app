@@ -1,7 +1,7 @@
 <!-- 
 Tailwindのおまじない
 cd frontend
-npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
+npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
 -->
 
 <!DOCTYPE html>
@@ -55,57 +55,80 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         />
       </div>
     </div>
-    <div id="main" class="mb-6 xl:mb-4 relative">
-      <div class="w-full">
-        <img src="image\Hero.svg" alt="ヒーロー画像" />
-      </div>
+    <div
+      id="main"
+      class="mt-2 xl:mt-4 ml-0 xl:ml-20 mr-0 xl:mr-20 mb-6 xl:mb-8"
+    >
       <div
-        class="absolute w-fit xl:w-fit scale-100 xl:scale-150 top-0 xl:top-auto bottom-12 xl:bottom-20 right-16 xl:right-0 left-auto xl:left-[62%]"
+        class="bg-[#e7e0ca] shadow-lg rounded pb-6 xl:pb-20 mr-2 xl:mr-0 ml-2 xl:ml-0 mb-4 xl:mb-2"
       >
-        <div id="megs" style="color: red">&nbsp;</div>
-        <label
-          class="font-nsjp font-semibold xl:mb-1 text-sm xl:text-2xl text-slate-800"
-        >
-          メールアドレス
-        </label>
-        <br />
-        <input
-          type="email"
-          class="border-4 shadow border-slate-600 w-[120%] xl:w-[16vw] rounded"
-          id="email"
-          name="email"
-          required
-        />
-        <br />
-        <label
-          class="font-nsjp font-semibold xl:mb-1 text-sm xl:text-2xl text-slate-800"
-        >
-          パスワード
-        </label>
-        <br />
-        <input
-          type="password"
-          class="border-4 shadow border-slate-600 w-[120%] xl:w-[16vw] rounded"
-          id="password"
-          name="password"
-          required
-        />
-        <div class="mt-6 justify ml-auto text-center">
-          <a href="makelog.html">
+        <div class="xl:ml-4 xl:mr-4 xl:mt-2 pt-2 xl:pt-4">
+          <div class="ml-2 xl:ml-4 mb-2 xl:mb-4">
+            <h2
+              class="text-[#023047] text-[170%] xl:text-[300%] font-pattaya h-8 xl:h-16"
+            >
+              Embarkation Procedures
+            </h2>
+            <h4
+              class="text-[#023047] text-[80%] xl:text-[150%] font-nsjp xl:font-medium"
+            >
+              ログイン
+            </h4>
+          </div>
+          <div class="xl:ml-[10%] xl:mr-[10%] mb-4">
+            <img
+              src="image\Hero.svg"
+              alt="ヒーロー画像"
+              class="shadow-md mb-6 ml-4 xl:ml-0 mr-4 xl:mr-0 xl:mt-2 rounded border-4 border-white"
+            />
+          </div>
+        </div>
+        <div class="ml-auto mr-auto w-fit xl:w-fit scale-100 xl:scale-125">
+          <div id="megs" style="color: red">&nbsp;</div>
+          <label
+            class="text-left font-nsjp font-semibold xl:mb-1 text-sm xl:text-xl text-slate-800"
+            for="email"
+          >
+            メールアドレス
+          </label>
+          <br />
+          <input
+            type="email"
+            class="border-4 shadow border-slate-600 w-[] xl:w-[16vw] rounded"
+            id="email"
+            name="email"
+            required
+          />
+          <br />
+          <label
+            class="text-left font-nsjp font-semibold xl:mb-1 text-sm xl:text-xl text-slate-800"
+            for="password"
+          >
+            パスワード
+          </label>
+          <br />
+          <input
+            type="password"
+            class="border-4 shadow border-slate-600 w-[] xl:w-[16vw] rounded"
+            id="password"
+            name="password"
+            required
+          />
+          <div class="mt-6 justify ml-auto text-center">
             <button
               onclick="login()"
-              class="shadow-md w-fit pl-[1vw] pr-[1vw] pb-1 bg-[#FFB703] border-4 border-[#FB8500] font-nsjp font-semibold text-[#023047] rounded"
+              class="text-xl shadow-md w-fit pl-[1vw] pr-[1vw] pb-1 bg-[#FFB703] border-4 border-[#FB8500] font-nsjp font-semibold text-[#023047] rounded"
             >
               ログイン
             </button>
-          </a>
-          <a href="signup.html" class="ml-8">
-            <button
-              class="shadow-md w-fit pl-[1vw] pr-[1vw] pb-1 bg-[#8ECAE6] border-4 border-white font-nsjp font-semibold text-[#023047] rounded"
-            >
-              新規登録
-            </button>
-          </a>
+            <a href="/signup.html" class="ml-8">
+              <button
+                class="text-xl shadow-md w-fit pl-[1vw] pr-[1vw] pb-1 bg-[#8ECAE6] border-4 border-white font-nsjp font-semibold text-[#023047] rounded"
+              >
+                新規登録
+              </button>
+            </a>
+          </div>
         </div>
       </div>
     </div>

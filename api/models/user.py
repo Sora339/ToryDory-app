@@ -13,3 +13,4 @@ class User(Base):
     password = Column(String(64), nullable=False)
 
     tasks = relationship("Task", back_populates="user", cascade="delete")
+    diaries = relationship("Diary", back_populates="user", cascade="delete")

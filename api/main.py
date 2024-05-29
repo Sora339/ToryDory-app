@@ -3,13 +3,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 from api.extra_modules.auth import routers as auth
-from api.routers import done, task, user
+from api.routers import doing, done, task, user ,diary
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.include_router(task.router)
+# app.include_router(doing.router)
 app.include_router(done.router)
+# app.include_router(diary.router)
 app.include_router(user.router)
 app.include_router(auth.router)
 
