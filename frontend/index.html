@@ -57,8 +57,12 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
           alt="ヘッダー島"
           class="h-10 xl:h-12 ml-2 xl:ml-3"
         />
-        <img src="image\70b2865f6d5e44621b1093eac6ee4251.webp" alt="icon" class="h-14 w-14 ml-auto rounded-full object-cover"/>
-        <div class="ml-2 w-fit mr-8 ">
+        <img
+          src="image\70b2865f6d5e44621b1093eac6ee4251.webp"
+          alt="icon"
+          class="h-14 w-14 ml-auto rounded-full object-cover"
+        />
+        <div class="ml-2 w-fit mr-8">
           <h1
             id="welcome"
             class="text-[#023047] font-nsjp font-semibold text-xl mb-1"
@@ -449,14 +453,14 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
   let state1 = null; //異なるセット間でD&Dを禁止するためにドラッグ元の親idを保持
 
   function allowDrop(event) {
-    console.log("allowDrop");
+    // console.log("allowDrop");
     event.preventDefault();
     // Get the set ID of the dragged element
     // let draggedSetId = event.dataTransfer.getData("setId");
     // Get the set ID of the current drop target
     let dropTargetSetId = event.target.closest(".container").id;
-    console.log(state1);
-    console.log(dropTargetSetId);
+    // console.log(state1);
+    // console.log(dropTargetSetId);
 
     // Allow drop only if the target set is the same as the dragged element's set
     if (state1 === dropTargetSetId) {
@@ -468,24 +472,30 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
 
   function drag(event) {
     let statechange = 0;
-    console.log("drag");
     event.dataTransfer.setData("text", event.target.id);
+    event.dataTransfer.setData("box", event.target.closest(".box").id);
     // Store the set ID to prevent cross-set drops
     event.dataTransfer.setData("setId", event.target.closest(".container").id);
     // console.log(event.dataTransfer.getData("setId"));
     state1 = event.target.closest(".container").id;
     statechange = 1;
+    // console.log(event.target.id);
   }
 
   function drop(event) {
     event.preventDefault();
     let data = event.dataTransfer.getData("text");
+    let boxdata = event.dataTransfer.getData("box");
     let setId = event.dataTransfer.getData("setId");
-    console.log(setId);
     let element = document.getElementById(data);
 
     // Get the target element
     let target = event.target;
+
+    console.log(data);
+    console.log(boxdata);
+    console.log(event.target.id);
+    updateTaskDoneStatus(data, event.target.id, boxdata);
 
     // If the target is not a box, find the closest parent box
     while (!target.classList.contains("box") && target.parentElement) {
@@ -501,16 +511,44 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     }
   }
 
-  // // タスクのチェックボックスがクリックされたときの処理
-  // const updateTaskDoneStatus = (taskId, checkboxId) => {
-  //   const checkbox = document.getElementById(checkboxId);
-
-  //   if (checkbox.checked) {
-  //     doneTaskApi(taskId);
-  //   } else {
-  //     undoneTaskApi(taskId);
-  //   }
-  // };
+  //タスクのステータスが変更されたときの処理
+  const updateTaskDoneStatus = (taskId, newstatusId, oldstatusId) => {
+    if (newstatusId == oldstatusId) {
+      console.log("not change");
+    } else if (
+      (oldstatusId == "box1-1" && newstatusId == "box1-2") ||
+      (oldstatusId == "box2-1" && newstatusId == "box2-2")
+    ) {
+      doingTaskApi(taskId);
+    } else if (
+      (oldstatusId == "box1-2" && newstatusId == "box1-3") ||
+      (oldstatusId == "box2-2" && newstatusId == "box2-3")
+    ) {
+      doneTaskApi(taskId);
+      undoingTaskApi(taskId);
+    } else if (
+      (oldstatusId == "box1-1" && newstatusId == "box1-3") ||
+      (oldstatusId == "box2-1" && newstatusId == "box2-3")
+    ) {
+      doneTaskApi(taskId);
+    } else if (
+      (oldstatusId == "box1-3" && newstatusId == "box1-2") ||
+      (oldstatusId == "box2-3" && newstatusId == "box2-2")
+    ) {
+      doingTaskApi(taskId);
+      undoneTaskApi(taskId);
+    } else if (
+      (oldstatusId == "box1-2" && newstatusId == "box1-1") ||
+      (oldstatusId == "box2-2" && newstatusId == "box2-1")
+    ) {
+      undoingTaskApi(taskId);
+    } else if (
+      (oldstatusId == "box1-3" && newstatusId == "box1-1") ||
+      (oldstatusId == "box2-3" && newstatusId == "box2-1")
+    ) {
+      undoneTaskApi(taskId);
+    }
+  };
 
   // タスク一覧を取得
   getAllTasksApi().then((data) => {
@@ -554,10 +592,21 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       const fulldate = year + "-" + month + "-" + date;
       console.log(fulldate);
       if (fulldate == `${task.due_date}`) {
-        taskList_today_todo.appendChild(taskDiv);
+        if ((`${task.doing}` == "false") && (`${task.done}` == "false")) {
+          taskList_today_todo.appendChild(taskDiv);
+        } else if (`${task.doing}` == "true") {
+          taskList_today_doing.appendChild(taskDiv);
+        } else if (`${task.done}` == "true") {
+          taskList_today_done.appendChild(taskDiv);
+        }
       } else if (fulldate <= `${task.due_date}`) {
-        console.log(`${task.due_date}`);
-        taskList_all_todo.appendChild(taskDiv);
+        if ((`${task.doing}` == "false") && (`${task.done}` == "false")) {
+          taskList_all_todo.appendChild(taskDiv);
+        } else if (`${task.doing}` == "true") {
+          taskList_all_doing.appendChild(taskDiv);
+        } else if (`${task.done}` == "true") {
+          taskList_all_done.appendChild(taskDiv);
+        }
       }
 
       // const inputId = `task-done-checkbox-${task.id}`;

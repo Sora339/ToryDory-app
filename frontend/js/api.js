@@ -187,6 +187,29 @@ const undoneTaskApi = (taskId) => {
 }
 
 /**
+ * タスクを実行中から未完了にするAPI
+ */
+const undoingTaskApi = (taskId) => {
+  const url = `${API_HOST}/task/${taskId}/doing`
+  return fetch(url, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  }).then((res) => {
+    if (res.ok) {
+      return res.json()
+    } else if (res.status === 401) {
+      handleLoginError()
+    } else {
+      console.error(res)
+      handleOtherError()
+    }
+  })
+}
+
+
+/**
  * ひとつのタスクを取得するAPI
  */
 const getTaskDetailApi = (taskId) => {
