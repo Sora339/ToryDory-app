@@ -37,4 +37,4 @@ class TaskDBUpdate(TaskApiUpdate):
 
 class Task(TaskCreateResponse):
     done: bool = Field(False, description="完了フラグ") 
-    # doing: bool = Field(False, description="実行中フラグ")
+    doing: bool = Field(False, description="実行中フラグ")
