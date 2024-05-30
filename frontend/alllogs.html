@@ -21,13 +21,17 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <title>日記一覧｜ToryDory</title>
     <link rel="icon" href="image/marulogo.ico" />
 
     <script type="text/javascript" src="/js/general.js"></script>
     <script type="text/javascript" src="/js/api.js"></script>
   </head>
-  <body class="bg-slate-300">
+  <body class="bg-slate-200">
     <div id="header" class="relative h-[56px] xl:h-[72px]">
       <div>
         <div class="bg-[#8ECAE6] h-5 xl:h-6"></div>
@@ -57,12 +61,12 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     </div>
     <div
       id="main"
-      class="mt-2 xl:mt-4 ml-0 xl:ml-28 mr-0 xl:mr-28 mb-6 xl:mb-8"
+      class="mt-2 xl:mt-0 ml-0 xl:ml-28 mr-0 xl:mr-28 mb-6 xl:mb-8"
     >
       <div
-        class="bg-[#68b0ab] shadow-lg rounded pb-6 xl:pb-20 mr-2 xl:mr-0 ml-2 xl:ml-0 mb-4 xl:mb-10"
+        class="bg-[#68b0ab] shadow-lg pb-6 xl:pb-20 mr-2 xl:mr-0 ml-2 xl:ml-0 mb-4 xl:mb-10 rounded-b"
       >
-        <div class="xl:ml-4 xl:mr-4 xl:mt-2 pt-2 xl:pt-4">
+        <div class="xl:ml-4 xl:mr-4 pt-2 xl:pt-4">
           <div class="ml-2 xl:ml-4 mb-2 xl:mb-4">
             <h2
               class="text-[#023047] text-[170%] xl:text-[300%] font-pattaya h-8 xl:h-16"
@@ -92,7 +96,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
                 </h3>
                 <div class="flex">
                   <input
-                    type="text"
+                    type="date"
                     class="border-4 shadow-md border-slate-600 xl:w-[16vw] rounded mr-2 xl:mr-4"
                   />
                   <button
@@ -104,14 +108,41 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
               </div>
             </div>
             <div
-              class="h-28 xl:h-44 shadow-md bg-white ml-4 xl:ml-8 mr-4 xl:mr-8 mb-4 xl:mb-8"
-            ></div>
+              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
+            >
+              <div class="bg-slate-300 w-[50%]">
+                <img
+                  src="image\IMG_7834.jpg"
+                  alt="Tailwind_logo"
+                  class="h-full object-contain ml-auto mr-auto"
+                />
+              </div>
+              <div class="bg-white shadow-md h-full xl:h-full w-full"></div>
+            </div>
             <div
-              class="h-28 xl:h-44 shadow-md bg-white ml-4 xl:ml-8 mr-4 xl:mr-8 mb-4 xl:mb-8"
-            ></div>
+              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
+            >
+              <div class="bg-slate-300 w-[50%]">
+                <img
+                  src="image\IMG_7943.jpg"
+                  alt="Tailwind_logo"
+                  class="h-full object-contain ml-auto mr-auto"
+                />
+              </div>
+              <div class="bg-white shadow-md h-full xl:h-full w-full"></div>
+            </div>
             <div
-              class="h-28 xl:h-44 shadow-md bg-white ml-4 xl:ml-8 mr-4 xl:mr-8 mb-4 xl:mb-8"
-            ></div>
+              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
+            >
+              <div class="bg-slate-300 w-[50%]">
+                <img
+                  src="image\IMG_7822.PNG"
+                  alt="Tailwind_logo"
+                  class="h-full object-contain ml-auto mr-auto"
+                />
+              </div>
+              <div class="bg-white shadow-md h-full xl:h-full w-full"></div>
+            </div>
           </div>
         </div>
         <div
@@ -132,7 +163,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       <div class="text-center xl:pb-0">
         <a href="index.html">
           <button
-            class="w-fit xl:w-fit shadow-md p-[1%] xl:p-[0.1vw] pl-[4%] xl:pl-[1vw] pr-[4%] xl:pr-[1vw] pt-0 xl:pt-0 pb-0.5 bg-[#219EBC] border-4 border-[#8ECAE6] xl:text-[1.5vw] font-nsjp font-semibold text-[#023047] rounded"
+            class="w-fit xl:w-fit shadow-md p-[1%] xl:p-[0.1vw] pl-[4%] xl:pl-[1vw] pr-[4%] xl:pr-[1vw] pt-0 xl:pt-0 pb-0.5 bg-[#8ECAE6] border-4 border-[#FFFFFF] xl:text-[1.5vw] font-nsjp font-semibold text-[#023047] rounded"
           >
             ホームに戻る
           </button>

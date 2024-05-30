@@ -31,7 +31,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     <script type="text/javascript" src="/js/general.js"></script>
     <script type="text/javascript" src="/js/api.js"></script>
   </head>
-  <body class="bg-gradient-to-r from-cyan-500 to-blue-500">
+  <body class="bg-slate-200">
     <div id="header" class="relative h-[56px]xl:h-[72px]">
       <div>
         <div class="bg-[#8ECAE6] h-5 xl:h-6"></div>
@@ -40,7 +40,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         <div class="bg-[#023047] h-2 xl:h-3"></div>
       </div>
       <div
-        class="flex ml-1 mr-1 xl:ml-3 xl:mr-3 absolute top-1 xl:top-1 xl:left-0"
+        class="items-center flex ml-1 mr-1 xl:ml-3 xl:mr-3 absolute top-1 xl:top-1 xl:left-0 w-full"
       >
         <img
           src="image\header_logo_1.svg"
@@ -57,7 +57,8 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
           alt="ヘッダー島"
           class="h-10 xl:h-12 ml-2 xl:ml-3"
         />
-        <div class="ml-[15%] w-[400px]">
+        <img src="image\70b2865f6d5e44621b1093eac6ee4251.webp" alt="icon" class="h-14 w-14 ml-auto rounded-full object-cover"/>
+        <div class="ml-2 w-fit mr-8 ">
           <h1
             id="welcome"
             class="text-[#023047] font-nsjp font-semibold text-xl mb-1"
@@ -425,7 +426,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         alt="marulogo"
         class="h-6 xl:h-8 mr-1 xl:mr-2"
       />
-      <p class="text-center text-white font-nsjp text-[50%] xl:text-[100%]">
+      <p class="text-center text-[#023047] font-nsjp text-[50%] xl:text-[100%]">
         ©2024 Nishibori Sorachi All rights reserved.
       </p>
     </div>
@@ -548,14 +549,14 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       taskDiv.appendChild(deleteButton);
       const today = new Date();
       const year = today.getFullYear();
-      const month = (today.getMonth() + 1).toString().padStart(2, '0');
-      const date = (today.getDate()).toString().padStart(2, '0');
-      const fulldate = year+"-"+month+"-"+date;
+      const month = (today.getMonth() + 1).toString().padStart(2, "0");
+      const date = today.getDate().toString().padStart(2, "0");
+      const fulldate = year + "-" + month + "-" + date;
       console.log(fulldate);
-      if (fulldate == `${task.due_date}`){
+      if (fulldate == `${task.due_date}`) {
         taskList_today_todo.appendChild(taskDiv);
-      }else if(fulldate <= `${task.due_date}`){
-        console.log(`${task.due_date}`)
+      } else if (fulldate <= `${task.due_date}`) {
+        console.log(`${task.due_date}`);
         taskList_all_todo.appendChild(taskDiv);
       }
 
