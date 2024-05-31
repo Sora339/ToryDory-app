@@ -1067,6 +1067,10 @@ html {
   height: 100%;
 }
 
+.w-14{
+  width: 3.5rem;
+}
+
 .w-\[120\%\]{
   width: 120%;
 }
@@ -1122,10 +1126,6 @@ html {
 
 .w-full{
   width: 100%;
-}
-
-.w-14{
-  width: 3.5rem;
 }
 
 .flex-shrink{
@@ -2665,6 +2665,11 @@ html {
   color: rgb(142 202 230 / var(--tw-text-opacity));
 }
 
+.text-\[\#FF0000\]{
+  --tw-text-opacity: 1;
+  color: rgb(255 0 0 / var(--tw-text-opacity));
+}
+
 .text-blue-500{
   --tw-text-opacity: 1;
   color: rgb(59 130 246 / var(--tw-text-opacity));
@@ -3131,10 +3136,6 @@ html {
   text-align: center;
 }
 
-.group:hover .group-hover\:visible{
-  visibility: visible;
-}
-
 @media (min-width: 640px){
   .sm\:underline{
     text-decoration-line: underline;
@@ -3164,10 +3165,6 @@ html {
 
   .xl\:bottom-\[22\%\]{
     bottom: 22%;
-  }
-
-  .xl\:bottom-auto{
-    bottom: auto;
   }
 
   .xl\:left-0{
