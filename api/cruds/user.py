@@ -32,6 +32,15 @@ def get_user_by_email(db: Session, email: str) -> user_model.User | None:
     )
     return result.scalars().first()
 
+def get_user(
+    db: Session,
+    user_id: int,
+) -> user_model.User | None:
+    result: Result = db.execute(
+        select(user_model.User).filter(user_model.User.id == user_id)
+    )
+    return result.scalars().first()
+
 
 def authenticate_user(
     db: Session,
@@ -44,3 +53,18 @@ def authenticate_user(
     if not verify_password(password, user.password):
         return False
     return user
+
+def update_user(
+    db: Session,
+    user_create: user_schema.UserDBUpdate,
+    original: user_model.User,
+) -> user_model.User:
+
+    if user_create.icon_img is not None:
+        original.icon_img = user_create.icon_img
+
+    db.add(original)
+    db.commit()
+    db.refresh(original)
+    return original
+
