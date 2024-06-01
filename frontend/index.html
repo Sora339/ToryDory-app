@@ -57,11 +57,8 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
           alt="ヘッダー島"
           class="h-10 xl:h-12 ml-2 xl:ml-3"
         />
-        <img
-          src="image\70b2865f6d5e44621b1093eac6ee4251.webp"
-          alt="icon"
-          class="h-14 w-14 ml-auto rounded-full object-cover"
-        />
+        <div id="my-image" class="ml-auto">
+        </div>
         <div class="ml-2 w-fit mr-8">
           <h1
             id="welcome"
@@ -463,7 +460,12 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
   getMeApi().then((data) => {
     console.log("data:", data);
     const welcomeH1 = document.getElementById("welcome");
+    const icon = document.getElementById("my-image");
     welcomeH1.innerText = `${data.nickname}さん`;
+    icon.innerHTML = `
+        <img src="${API_HOST}${data.icon_img}" alt="アイコン画像" class="h-14 w-14 ml-auto rounded-full object-cover">
+      `
+    console.log(icon.src);
   });
 
   let state1 = null; //異なるセット間でD&Dを禁止するためにドラッグ元の親idを保持

@@ -90,9 +90,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
               class="block shadow-md ml-4 xl:ml-0 mr-4 xl:mr-0 xl:mt-2 rounded border-4 border-white"
             />
           </div>
-          <div
-            class="mt-8 ml-auto mr-auto w-fit xl:w-fit scale-100"
-          >
+          <div class="mt-8 ml-auto mr-auto w-fit xl:w-fit scale-100">
             <div id="megs" style="color: red">&nbsp;</div>
             <label
               class="text-left font-nsjp font-semibold xl:mb-1 text-sm xl:text-2xl text-slate-800"
@@ -146,17 +144,27 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
               アイコン画像
             </label>
             <br />
-            <div
+            <figure
+              id="figure"
               class="ml-auto mr-auto mb-2 flex flex-col h-[150px] w-[150px] items-center text-center justify-center bg-slate-200 rounded-full"
             >
-              <span
-                class="material-symbols-outlined !text-6xl text-slate-600"
-                id="upload-button"
-              >
-                account_circle
-              </span>
-            </div>
-            <input type="file" id="task-image-input" name="img_path" class="xl:text-xl"/>
+              <figcaption>
+                <span
+                  class="material-symbols-outlined !text-6xl text-slate-600"
+                  id="upload-button"
+                >
+                  account_circle
+                </span>
+              </figcaption>
+              <img src="" alt="" id="figureImage" class="w-full h-full rounded-full object-cover hidden"/>
+            </figure>
+            <input
+              type="file"
+              id="icon-image-input"
+              name="icon_img"
+              class="xl:text-xl"
+              accept="image/*"
+            />
             <!-- <img
                 src="image\IMG_7834.jpg"
                 alt="Tailwind_logo"
@@ -191,12 +199,33 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       location.href = "/index.html";
     }
 
+    function main() {
+      const input = document.getElementById("icon-image-input");
+      const figure = document.getElementById("figure");
+      const circle = document.getElementById("upload-button");
+      const figureImage = document.getElementById("figureImage");
+
+      input.addEventListener("change", (event) => {
+        // <1>
+        const [file] = event.target.files;
+
+        if (file) {
+          figureImage.setAttribute("src", URL.createObjectURL(file));
+          figureImage.style.display = "block";
+          circle.style.display = "none";
+        }
+      });
+    }
+
+    main();
+
     const register = () => {
       // フォームの値を取得
       // .trim()で前後の空白を削除
       const nickname = document.getElementById("nickname").value.trim();
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
+      const iconImageInput = document.getElementById("icon-image-input");
 
       // メッセージを表示するための要素を取得
       const megsBox = document.getElementById("megs");
@@ -216,6 +245,12 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       // API操作を呼び出す
       signUpApi(data)
         .then((res) => {
+          // 画像がある場合は、画像をアップロード
+          if (iconImageInput.files.length !== 0) {
+            console.log(res.id);
+            console.log(iconImageInput.files[0]);
+            updateiconImageApi(res.id, iconImageInput.files[0]);
+          }
           megsBox.innerHTML =
             '新規登録に成功しました <a href="/login.html">ログインページへ</a>';
         })

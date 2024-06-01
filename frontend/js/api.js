@@ -76,6 +76,34 @@ const loginApi = (email, password) => {
 }
 
 /**
+ * アイコンの画像を更新するAPI
+ */
+const updateiconImageApi = (myId, file) => {
+  const url = `${API_HOST}/user/${myId}/image`
+  const formData = new FormData()
+  formData.append('icon_img_path', file)
+  console.log(formData)
+  return fetch(url, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    body: formData,
+  }).then((res) => {
+    if (res.ok) {
+      return res.json()
+    } else if (res.status === 401) {
+      handleLoginError()
+    } else if (res.status === 403) {
+      handleForbiddenError()
+    } else {
+      console.error(res)
+      handleOtherError()
+    }
+  })
+}
+
+/**
  * ログインユーザー情報取得するAPI
  */
 const getMeApi = () => {
@@ -286,29 +314,29 @@ const updateTaskApi = (taskId, data) => {
 /**
  * タスクの画像を更新するAPI
  */
-const updateTaskImageApi = (taskId, file) => {
-  const url = `${API_HOST}/task/${taskId}/image`
-  const formData = new FormData()
-  formData.append('image', file)
-  return fetch(url, {
-    method: 'PUT',
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-    },
-    body: formData,
-  }).then((res) => {
-    if (res.ok) {
-      return res.json()
-    } else if (res.status === 401) {
-      handleLoginError()
-    } else if (res.status === 403) {
-      handleForbiddenError()
-    } else {
-      console.error(res)
-      handleOtherError()
-    }
-  })
-}
+// const updateTaskImageApi = (taskId, file) => {
+//   const url = `${API_HOST}/task/${taskId}/image`
+//   const formData = new FormData()
+//   formData.append('image', file)
+//   return fetch(url, {
+//     method: 'PUT',
+//     headers: {
+//       Authorization: `Bearer ${localStorage.getItem('token')}`,
+//     },
+//     body: formData,
+//   }).then((res) => {
+//     if (res.ok) {
+//       return res.json()
+//     } else if (res.status === 401) {
+//       handleLoginError()
+//     } else if (res.status === 403) {
+//       handleForbiddenError()
+//     } else {
+//       console.error(res)
+//       handleOtherError()
+//     }
+//   })
+// }
 
 /**
  * タスクを削除するAPI
