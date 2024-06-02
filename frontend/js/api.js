@@ -150,23 +150,32 @@ const getAllTasksApi = () => {
 /**
  * タスクを完了にするAPI
  */
-const doneTaskApi = (taskId) => {
+const doneTaskApi = (taskId, doneDate) => {
   const url = `${API_HOST}/task/${taskId}/done`;
+  const body = {
+    done_date: doneDate,
+  };
   return fetch(url, {
     method: "PUT",
     headers: {
+      "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else if (res.status === 401) {
-      handleLoginError();
-    } else {
-      console.error(res);
-      handleOtherError();
-    }
-  });
+    body: JSON.stringify(body),
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else if (res.status === 401) {
+        handleLoginError();
+      } else {
+        console.error(res);
+        handleOtherError();
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 };
 
 /**
@@ -354,6 +363,26 @@ const deleteTaskApi = (taskId) => {
       handleLoginError();
     } else if (res.status === 403) {
       handleForbiddenError();
+    } else {
+      console.error(res);
+      handleOtherError();
+    }
+  });
+};
+
+//完了タスクの一覧を取得する
+const getDonetaskApi = () => {
+  const url = `${API_HOST}/donetask`;
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else if (res.status === 401) {
+      handleLoginError();
     } else {
       console.error(res);
       handleOtherError();

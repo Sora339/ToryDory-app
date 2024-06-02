@@ -40,7 +40,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         <div class="bg-[#023047] h-2 xl:h-3"></div>
       </div>
       <div
-        class="flex ml-1 mr-1 xl:ml-3 xl:mr-3 absolute top-1 xl:top-1 xl:left-0"
+        class="items-center flex ml-1 mr-1 xl:ml-3 xl:mr-3 absolute top-1 xl:top-1 xl:left-0 w-full"
       >
         <img
           src="image\header_logo_1.svg"
@@ -57,6 +57,19 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
           alt="ヘッダー島"
           class="h-10 xl:h-12 ml-2 xl:ml-3"
         />
+        <div id="my-image" class="ml-auto"></div>
+        <div class="ml-2 w-fit mr-8">
+          <h1
+            id="welcome"
+            class="text-[#023047] font-nsjp font-semibold text-xl mb-1"
+          ></h1>
+          <button
+            onclick="logout()"
+            class="bg-[#8ECAE6] border-2 border-white rounded text-[#023047] font-nsjp font-semibold pl-1 pr-1"
+          >
+            ログアウト
+          </button>
+        </div>
       </div>
     </div>
     <div

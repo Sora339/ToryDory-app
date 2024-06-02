@@ -1357,10 +1357,6 @@ html {
   list-style-type: disc;
 }
 
-.\!list-disc{
-  list-style-type: disc !important;
-}
-
 .appearance-none{
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -2246,12 +2242,44 @@ html {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-\[url\(\'\.\.\/image\/IMG_7822\.PNG\'\)\]{
+  background-image: url('../image/IMG_7822.PNG');
+}
+
 .bg-\[url\(\'\.\.\/image\/makelog\.svg\'\)\]{
   background-image: url('../image/makelog.svg');
 }
 
 .bg-\[url\(\'\.\.\/image\/maketask\.svg\'\)\]{
   background-image: url('../image/maketask.svg');
+}
+
+.bg-\[url\(\'\'\)\]{
+  background-image: url('');
+}
+
+.bg-\[url\(\'\$\'\)\]{
+  background-image: url('$');
+}
+
+.bg-\[url\(\'\$\{\}\'\)\]{
+  background-image: url('${}');
+}
+
+.bg-\[url\(\'\$\{f\}\'\)\]{
+  background-image: url('${f}');
+}
+
+.bg-\[url\(\'\$\{URL\.createObjectURL\(file\)\}\'\)\]{
+  background-image: url('${URL.createObjectURL(file)}');
+}
+
+.bg-\[url\(\'\`\`\'\)\]{
+  background-image: url('``');
+}
+
+.bg-\[url\(\'\`URL\.createObjectURL\(file\)\`\'\)\]{
+  background-image: url('`URL.createObjectURL(file)`');
 }
 
 .decoration-slice{
@@ -2272,6 +2300,10 @@ html {
 .box-decoration-clone{
   -webkit-box-decoration-break: clone;
           box-decoration-break: clone;
+}
+
+.bg-contain{
+  background-size: contain;
 }
 
 .bg-cover{
@@ -2305,6 +2337,10 @@ html {
 .bg-clip-text{
   -webkit-background-clip: text;
           background-clip: text;
+}
+
+.bg-center{
+  background-position: center;
 }
 
 .bg-repeat{
@@ -2368,6 +2404,14 @@ html {
      object-fit: scale-down;
 }
 
+.p-2{
+  padding: 0.5rem;
+}
+
+.p-8{
+  padding: 2rem;
+}
+
 .p-\[0\.1vw\]{
   padding: 0.1vw;
 }
@@ -2378,18 +2422,6 @@ html {
 
 .p-\[5px\]{
   padding: 5px;
-}
-
-.p-2{
-  padding: 0.5rem;
-}
-
-.p-4{
-  padding: 1rem;
-}
-
-.p-8{
-  padding: 2rem;
 }
 
 .pb-0{
@@ -3094,8 +3126,7 @@ html {
 }
 
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 54;
-  /* font-size: 54px !important; */
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
 @media (min-width: 640px){
