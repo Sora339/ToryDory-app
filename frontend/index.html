@@ -465,7 +465,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     handleLoginError();
   }
 
-//時計を動かす
+  //時計を動かす
   setTimeout(function () {
     setClock();
   }, 1000);
@@ -563,13 +563,13 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     ) {
       undoingTaskApi(taskId);
       doneTaskApi(taskId, donedate);
-      donetasklist(taskId);
+      adddonetasklist(taskId);
     } else if (
       (oldstatusId == "box1-1" && newstatusId == "box1-3") ||
       (oldstatusId == "box2-1" && newstatusId == "box2-3")
     ) {
       doneTaskApi(taskId, donedate);
-      donetasklist(taskId);
+      adddonetasklist(taskId);
     } else if (
       (oldstatusId == "box1-3" && newstatusId == "box1-2") ||
       (oldstatusId == "box2-3" && newstatusId == "box2-2")
@@ -591,16 +591,50 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     }
   };
 
-  const donetasklist = (taskId) => {
-    const taskname = document.getElementById(taskId).innerText;
+  //新たにdoneリストに追加
+  const adddonetasklist = (taskId) => {
     const donetaskDiv = document.createElement("li");
     const doneList = document.getElementById("donelist");
     donetaskDiv.setAttribute("class", "font-nsjp font-medium text-xl");
     donetaskDiv.setAttribute("id", "donelist" + taskId);
-    donetaskDiv.innerHTML = taskname;
-    doneList.appendChild(donetaskDiv);
+    const taskDetailUrl = `${API_HOST}/task/${taskId}`;
+    getTaskDetailApi(taskId).then((data) => {
+      donetaskDiv.innerHTML = `
+            ${data.title}
+            `;
+      doneList.appendChild(donetaskDiv);
+      console.log("data:", data.title);
+    });
   };
 
+  //doneリストの読み込み
+  getDonetaskApi().then((data) => {
+    console.log(data);
+    data.forEach((task) => {
+      console.log(task.done_date);
+      const donetaskDiv = document.createElement("li");
+      const doneList = document.getElementById("donelist");
+      donetaskDiv.setAttribute("class", "font-nsjp font-medium text-xl");
+      donetaskDiv.setAttribute("id", "donelist" + `${task.id}`);
+      if (task.done_date == gettoday()) {
+        const taskcommentDiv = document.createElement("div");
+        const taskcommentDivcontainer = document.getElementById(
+          "taskcommentDivcontainer"
+        );
+        //タスクテーブルから該当idのタイトルを取得
+        const taskDetailUrl = `${API_HOST}/task/${task.id}`;
+        getTaskDetailApi(task.id).then((data) => {
+          donetaskDiv.innerHTML = `
+            ${data.title}
+            `;
+          doneList.appendChild(donetaskDiv);
+          console.log("data:", data.title);
+        });
+      }
+    });
+  });
+
+  //doneリストから削除
   const remomvedonetasklist = (taskId) => {
     const doneList = document.getElementById("donelist" + taskId);
     doneList.remove();
@@ -645,7 +679,6 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
           taskList_today_doing.appendChild(taskDiv);
         } else if (`${task.done}` == "true") {
           taskList_today_done.appendChild(taskDiv);
-          doneList.appendChild(donetaskDiv);
         }
       } else if (fulldate != `${task.due_date}`) {
         if (`${task.doing}` == "false" && `${task.done}` == "false") {
@@ -654,7 +687,6 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
           taskList_all_doing.appendChild(taskDiv);
         } else if (`${task.done}` == "true") {
           taskList_all_done.appendChild(taskDiv);
-          doneList.appendChild(donetaskDiv);
         }
       }
     });

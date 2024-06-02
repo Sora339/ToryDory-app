@@ -181,6 +181,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         >
           <button
             class="shadow-md w-fit xl:w-fit p-[1%] xl:p-[0.1vw] pl-[4%] xl:pl-[2vw] pr-[4%] xl:pr-[2vw] pt-0 xl:pt-0 bg-[#FFB703] border-4 border-[#FB8500] xl:text-[1.5vw] font-nsjp font-semibold text-[#023047] rounded"
+            onclick="savediary()"
           >
             保存
           </button>
@@ -296,7 +297,33 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     }
     main();
 
-    //日記保存
+    //日記を保存
+    const savediary = () => {
+      const diarytext = document.getElementById("output-area");
+      const diarytextvalue = diarytext.value;
+      if (!diarytextvalue) {
+        megsDiv.innerText = "日記を入力してください";
+        return;
+      }
+      const diaryImageInput = document.getElementById("diary-image-input");
+      const date = gettoday();
+
+      const diaryData = {
+        date: date,
+        main_text: diarytextvalue
+      };
+
+      createDiaryApi(diaryData).then(async (data) => {
+        console.log("data:", data.id);
+        // 画像がある場合は、画像をアップロード
+        if (diaryImageInput.files.length !== 0) {
+          updateDiaryImageApi(data.id, diaryImageInput.files[0]);
+          console.log(diaryImageInput.files[0]);
+        }
+        alert("日記を保存しました");
+        location.href = "/alllogs.html";
+      });
+    };
   </script>
 
   <script type="importmap">
@@ -327,7 +354,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       // テキストエリアの数を取得
       const numberOfTextareas = textareas.length - 1;
       let alltext = "";
-      for (let i = 0; i < numberOfTextareas;) {
+      for (let i = 0; i < numberOfTextareas; ) {
         alltext += textareas[i].value;
         i++;
         if (i < numberOfTextareas) {

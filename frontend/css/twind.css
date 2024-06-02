@@ -2242,8 +2242,8 @@ html {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-\[url\(\'\.\.\/image\/IMG_7822\.PNG\'\)\]{
-  background-image: url('../image/IMG_7822.PNG');
+.bg-\[url\(\'\'\)\]{
+  background-image: url('');
 }
 
 .bg-\[url\(\'\.\.\/image\/makelog\.svg\'\)\]{
@@ -2252,34 +2252,6 @@ html {
 
 .bg-\[url\(\'\.\.\/image\/maketask\.svg\'\)\]{
   background-image: url('../image/maketask.svg');
-}
-
-.bg-\[url\(\'\'\)\]{
-  background-image: url('');
-}
-
-.bg-\[url\(\'\$\'\)\]{
-  background-image: url('$');
-}
-
-.bg-\[url\(\'\$\{\}\'\)\]{
-  background-image: url('${}');
-}
-
-.bg-\[url\(\'\$\{f\}\'\)\]{
-  background-image: url('${f}');
-}
-
-.bg-\[url\(\'\$\{URL\.createObjectURL\(file\)\}\'\)\]{
-  background-image: url('${URL.createObjectURL(file)}');
-}
-
-.bg-\[url\(\'\`\`\'\)\]{
-  background-image: url('``');
-}
-
-.bg-\[url\(\'\`URL\.createObjectURL\(file\)\`\'\)\]{
-  background-image: url('`URL.createObjectURL(file)`');
 }
 
 .decoration-slice{

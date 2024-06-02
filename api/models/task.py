@@ -34,15 +34,6 @@ class Done(Base):
 
     task = relationship("Task", back_populates="done")
 
-class Diary(Base):
-    __tablename__ = "diary"
 
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    date = Column(Date,nullable=False)
-    main_text = Column(String(2048))
-    diary_img = Column(String(1024))
-    
-    user = relationship("User", back_populates="diaries")
     
     

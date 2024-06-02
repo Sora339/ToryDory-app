@@ -120,41 +120,8 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
                 </div>
               </div>
             </div>
-            <div
-              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
-            >
-              <div class="bg-slate-300 w-[50%]">
-                <img
-                  src="image\IMG_7834.jpg"
-                  alt="Tailwind_logo"
-                  class="h-full object-contain ml-auto mr-auto"
-                />
-              </div>
-              <div class="bg-white shadow-md h-full xl:h-full w-full"></div>
-            </div>
-            <div
-              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
-            >
-              <div class="bg-slate-300 w-[50%]">
-                <img
-                  src="image\IMG_7943.jpg"
-                  alt="Tailwind_logo"
-                  class="h-full object-contain ml-auto mr-auto"
-                />
-              </div>
-              <div class="bg-white shadow-md h-full xl:h-full w-full"></div>
-            </div>
-            <div
-              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
-            >
-              <div class="bg-slate-300 w-[50%]">
-                <img
-                  src="image\IMG_7822.PNG"
-                  alt="Tailwind_logo"
-                  class="h-full object-contain ml-auto mr-auto"
-                />
-              </div>
-              <div class="bg-white shadow-md h-full xl:h-full w-full"></div>
+            <div id="diaryDivcontainer">
+              <!-- ここに日記一覧が追加 -->
             </div>
           </div>
         </div>
@@ -205,6 +172,32 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       console.log("data:", data);
       const welcomeH1 = document.getElementById("welcome");
       welcomeH1.innerText = `ようこそ、${data.nickname}さん`;
+    });
+
+    //日記の一覧を表示
+    getAlldiaryApi().then((data) => {
+      console.log(data);
+      data.forEach((diary) => {
+        const diarytDiv = document.createElement("div");
+        const diaryDivcontainer = document.getElementById("diaryDivcontainer");
+        diarytDiv.innerHTML = `
+          <div
+              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
+            >
+              <div class="bg-slate-300 w-[50%]">
+                <img
+                  src="${API_HOST}${diary.diary_img}"
+                  alt=""
+                  class="h-full object-contain ml-auto mr-auto"
+                />
+              </div>
+              <div class="bg-white shadow-md h-full xl:h-full w-full p-2 overflow-y-scroll">
+                <span class="block pb-2 w-fit ml-auto text-2xl text-[#023047] font-nsjp font-semibold">${diary.date}</span>${diary.main_text}</div>
+              </div>
+            </div>
+          `;
+        diaryDivcontainer.appendChild(diarytDiv);
+      });
     });
   </script>
 </html>

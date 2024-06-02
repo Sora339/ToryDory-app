@@ -11,7 +11,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 app.include_router(task.router)
 app.include_router(doing.router)
 app.include_router(done.router)
-# app.include_router(diary.router)
+app.include_router(diary.router)
 app.include_router(user.router)
 app.include_router(auth.router)
 
