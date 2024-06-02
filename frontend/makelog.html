@@ -41,7 +41,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         <div class="bg-[#023047] h-2 xl:h-3"></div>
       </div>
       <div
-        class="flex ml-1 mr-1 xl:ml-3 xl:mr-3 absolute top-1 xl:top-1 xl:left-0"
+        class="items-center flex ml-1 mr-1 xl:ml-3 xl:mr-3 absolute top-1 xl:top-1 xl:left-0 w-full"
       >
         <img
           src="image\header_logo_1.svg"
@@ -58,6 +58,19 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
           alt="ヘッダー島"
           class="h-10 xl:h-12 ml-2 xl:ml-3"
         />
+        <div id="my-image" class="ml-auto"></div>
+        <div class="ml-2 w-fit mr-8">
+          <h1
+            id="welcome"
+            class="text-[#023047] font-nsjp font-semibold text-xl mb-1"
+          ></h1>
+          <button
+            onclick="logout()"
+            class="bg-[#8ECAE6] border-2 border-white rounded text-[#023047] font-nsjp font-semibold pl-1 pr-1"
+          >
+            ログアウト
+          </button>
+        </div>
       </div>
     </div>
     <div
@@ -65,7 +78,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       class="mt-2 xl:mt-0 ml-0 xl:ml-28 mr-0 xl:mr-28 mb-6 xl:mb-8"
     >
       <div
-        class="bg-[#8fc0a9] shadow-lg  pb-6 xl:pb-20 mr-2 xl:mr-0 ml-2 xl:ml-0 mb-4 xl:mb-10 rounded-b"
+        class="bg-[#8fc0a9] shadow-lg pb-6 xl:pb-20 mr-2 xl:mr-0 ml-2 xl:ml-0 mb-4 xl:mb-10 rounded-b"
       >
         <div class="xl:ml-4 xl:mr-4 pt-2 xl:pt-4">
           <div class="ml-2 xl:ml-4 mb-2 xl:mb-4">
@@ -96,66 +109,15 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
                   今日完了したタスク
                 </h3>
                 <div
-                  class="h-[50vw] xl:h-[85%] w-[75vw] xl:w-[20vw] bg-white rounded"
-                ></div>
+                  id="donelist"
+                  class="h-[50vw] xl:h-[85%] w-[75vw] xl:w-[20vw] p-2 overflow-y-scroll bg-white rounded"
+                >
+                  <!-- ここにタスク一覧が追加 -->
+                </div>
               </div>
             </div>
-            <div class="relative xl:static flex xl:items-center">
-              <div
-                class="h-8 xl:h-14 w-[200px] xl:w-[450px] bg-white ml-4 xl:ml-8 mr-2 xl:mr-2 mb-2 xl:mb-4"
-              ></div>
-              <p
-                class="absolute top-[10px] left-auto right-[90px] bottom-0 xl:static font-nsjp font-semibold text-[#023047] xl:text-2xl"
-              >
-                について
-              </p>
-            </div>
-            <div
-              class="h-24 xl:h-44 bg-white ml-4 xl:ml-8 mr-4 xl:mr-8 mb-4 xl:mb-8"
-            >
-              <textarea
-                name="textarea1"
-                id="textarea1"
-                class="border-4 border-slate-600 shadow-md h-full xl:h-full w-full xl:w-full"
-              ></textarea>
-            </div>
-            <div class="relative xl:static flex xl:items-center">
-              <div
-                class="h-8 xl:h-14 w-[200px] xl:w-[450px] bg-white ml-4 xl:ml-8 mr-2 xl:mr-2 mb-2 xl:mb-4"
-              ></div>
-              <p
-                class="absolute top-[10px] left-auto right-[90px] bottom-0 xl:static font-nsjp font-semibold text-[#023047] xl:text-2xl"
-              >
-                について
-              </p>
-            </div>
-            <div
-              class="h-24 xl:h-44 bg-white ml-4 xl:ml-8 mr-4 xl:mr-8 mb-4 xl:mb-8"
-            >
-              <textarea
-                name="textarea2"
-                id="textarea2"
-                class="border-4 border-slate-600 shadow-md h-full xl:h-full w-full xl:w-full"
-              ></textarea>
-            </div>
-            <div class="relative xl:static flex xl:items-center">
-              <div
-                class="h-8 xl:h-14 w-[200px] xl:w-[450px] bg-white ml-4 xl:ml-8 mr-2 xl:mr-2 mb-2 xl:mb-4"
-              ></div>
-              <p
-                class="absolute top-[10px] left-auto right-[90px] bottom-0 xl:static font-nsjp font-semibold text-[#023047] xl:text-2xl"
-              >
-                について
-              </p>
-            </div>
-            <div
-              class="h-24 xl:h-44 bg-white ml-4 xl:ml-8 mr-4 xl:mr-8 mb-6 xl:mb-8"
-            >
-              <textarea
-                name="textarea3"
-                id="textarea3"
-                class="border-4 border-slate-600 shadow-md h-full xl:h-full w-full xl:w-full"
-              ></textarea>
+            <div id="taskcommentDivcontainer">
+              <!-- ここにタスクコメント一覧が追加 -->
             </div>
             <div class="flex items-baseline">
               <p
@@ -179,28 +141,37 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
             <div
               class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
             >
-              <div class="bg-slate-300 w-[50%]">
+              <div
+                id="figureImage"
+                class="bgimgpath bg-center bg-no-repeat bg-contain ml-auto mr-auto bg-[url('')] w-[50%]"
+              >
                 <div
                   class="flex flex-col h-full w-ful items-center text-center justify-center"
                 >
                   <span
-                    class="material-symbols-outlined !text-6xl text-slate-600"
+                    class="material-symbols-outlined !text-6xl mix-blend-overlay"
                     id="upload-button"
                   >
                     add_photo_alternate
                   </span>
-                  <input type="file" id="task-image-input" name="img_path">
+                  <input
+                    accept="image/*"
+                    type="file"
+                    id="diary-image-input"
+                    name="img_path"
+                  />
                 </div>
                 <!-- <img
                   src="image\IMG_7834.jpg"
-                  alt="Tailwind_logo"
+                  alt=""
+                  id="figureImage"
                   class="h-full object-contain ml-auto mr-auto"
                 /> -->
               </div>
               <textarea
                 name="todo1"
                 id="output-area"
-                class="shadow-md h-full xl:h-full w-full"
+                class="shadow-md h-full xl:h-full w-full overflow-y-scroll"
               ></textarea>
             </div>
           </div>
@@ -246,9 +217,86 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     getMeApi().then((data) => {
       console.log("data:", data);
       const welcomeH1 = document.getElementById("welcome");
-      welcomeH1.innerText = `ようこそ、${data.nickname}さん`;
+      const icon = document.getElementById("my-image");
+      welcomeH1.innerText = `${data.nickname}さん`;
+      icon.innerHTML = `
+        <img src="${API_HOST}${data.icon_img}" alt="アイコン画像" class="h-14 w-14 ml-auto rounded-full object-cover">
+      `;
+      // console.log(icon.src);
     });
 
+    // タスク一覧を取得
+    getDonetaskApi().then((data) => {
+      console.log(data);
+      data.forEach((task) => {
+        console.log(task.done_date);
+        const donetaskDiv = document.createElement("li");
+        const doneList = document.getElementById("donelist");
+        donetaskDiv.setAttribute("class", "font-nsjp font-medium text-xl");
+        donetaskDiv.setAttribute("id", "donelist" + `${task.id}`);
+        if (task.done_date == gettoday()) {
+          const taskcommentDiv = document.createElement("div");
+          const taskcommentDivcontainer = document.getElementById(
+            "taskcommentDivcontainer"
+          );
+          //タスクテーブルから該当idのタイトルを取得
+          const taskDetailUrl = `${API_HOST}/task/${task.id}`;
+          getTaskDetailApi(task.id).then((data) => {
+            donetaskDiv.innerHTML = `
+            ${data.title}
+            `;
+            doneList.appendChild(donetaskDiv);
+            console.log("data:", data.title);
+            taskcommentDiv.innerHTML = `
+            <div class="relative xl:static flex xl:items-center">
+              <div
+               id=${
+                 "tasktitle" + task.id
+               } class="h-8 xl:h-14 w-[200px] xl:w-[450px] bg-white ml-4 xl:ml-8 mr-2 xl:mr-2 mb-2 xl:mb-4"
+              ><span class="text-2xl font-nsjp font-semibold text-[#023047] items-center justify-center flex h-full">${
+                data.title
+              }</span></div>
+              <p
+                class="absolute top-[10px] left-auto right-[90px] bottom-0 xl:static font-nsjp font-semibold text-[#023047] xl:text-2xl"
+              >
+                について
+              </p>
+            </div>
+            <div
+              class="h-24 xl:h-44 bg-white ml-4 xl:ml-8 mr-4 xl:mr-8 mb-4 xl:mb-8"
+            >
+              <textarea
+                id=${"taxtarea" + task.id}
+                class="border-4 border-slate-600 shadow-md h-full xl:h-full w-full xl:w-full"
+              ></textarea>
+            </div>
+          `;
+            taskcommentDivcontainer.appendChild(taskcommentDiv);
+          });
+        }
+      });
+    });
+
+    //タスクコメント保存
+
+    //日記画像プレビュー
+    function main() {
+      const input = document.getElementById("diary-image-input");
+      const figureImage = document.getElementById("figureImage");
+
+      input.addEventListener("change", (event) => {
+        // <1>
+        const [file] = event.target.files;
+
+        if (file) {
+          figureImage.style.backgroundImage =
+            "url(" + URL.createObjectURL(file) + ")";
+        }
+      });
+    }
+    main();
+
+    //日記保存
   </script>
 
   <script type="importmap">
@@ -274,12 +322,22 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
 
     // ...
     async function run() {
-      const text1 = document.getElementById("textarea1").value;
-      const text2 = document.getElementById("textarea2").value;
-      const text3 = document.getElementById("textarea3").value;
+      // ページ上のすべてのテキストエリア要素を取得
+      const textareas = document.querySelectorAll("textarea");
+      // テキストエリアの数を取得
+      const numberOfTextareas = textareas.length - 1;
+      let alltext = "";
+      for (let i = 0; i < numberOfTextareas;) {
+        alltext += textareas[i].value;
+        i++;
+        if (i < numberOfTextareas) {
+          alltext += "\n";
+        }
+      }
+      console.log(alltext);
       const display = document.getElementById("output-area");
 
-      const combinedText = text1 + "\n" + text2 + "\n" + text3;
+      const combinedText = alltext;
 
       const prompt =
         "以下の文章を日記の体裁で整えてください。日付は入れないでください。" +

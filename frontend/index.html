@@ -395,19 +395,11 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
             class="bg-[url('../image/makelog.svg')] shadow-md m-3 mb-2 xl:m-4 border-white border-4 rounded bg-cover h-[148px] xl:h-[370px]"
           >
             <div class="ml-[58%] mt-[15px]">
-              <div class="flex items-center">
-                <h3
-                  class="font-nsjp font-semibold mb-1 xl:text-2xl text-[#023047]"
-                >
-                  今日完了したタスク
-                </h3>
-                <button
-                  class="material-symbols-outlined text-[#023047] ml-2 h-fit w-fit"
-                  onclick="reload()"
-                >
-                  refresh
-                </button>
-              </div>
+              <h3
+                class="font-nsjp font-semibold mb-1 xl:text-2xl text-[#023047]"
+              >
+                今日完了したタスク
+              </h3>
               <div
                 class="h-[15vh] xl:h-[210px] w-[50vw] xl:w-[16vw] bg-white rounded overflow-y-scroll"
               >
@@ -472,6 +464,11 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
   if (!checkLogin()) {
     handleLoginError();
   }
+
+//時計を動かす
+  setTimeout(function () {
+    setClock();
+  }, 1000);
 
   // ユーザー情報を取得
   getMeApi().then((data) => {
@@ -552,6 +549,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
 
   //タスクのステータスが変更されたときの処理
   const updateTaskDoneStatus = (taskId, newstatusId, oldstatusId) => {
+    const donedate = gettoday();
     if (newstatusId == oldstatusId) {
       console.log("not change");
     } else if (
@@ -564,21 +562,21 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       (oldstatusId == "box2-2" && newstatusId == "box2-3")
     ) {
       undoingTaskApi(taskId);
-      doneTaskApi(taskId);
-      // location.href = "/index.html";
+      doneTaskApi(taskId, donedate);
+      donetasklist(taskId);
     } else if (
       (oldstatusId == "box1-1" && newstatusId == "box1-3") ||
       (oldstatusId == "box2-1" && newstatusId == "box2-3")
     ) {
-      doneTaskApi(taskId);
-      // location.href = "/index.html";
+      doneTaskApi(taskId, donedate);
+      donetasklist(taskId);
     } else if (
       (oldstatusId == "box1-3" && newstatusId == "box1-2") ||
       (oldstatusId == "box2-3" && newstatusId == "box2-2")
     ) {
       undoneTaskApi(taskId);
       doingTaskApi(taskId);
-      // location.href = "/index.html";
+      remomvedonetasklist(taskId);
     } else if (
       (oldstatusId == "box1-2" && newstatusId == "box1-1") ||
       (oldstatusId == "box2-2" && newstatusId == "box2-1")
@@ -589,24 +587,24 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       (oldstatusId == "box2-3" && newstatusId == "box2-1")
     ) {
       undoneTaskApi(taskId);
-      // location.href = "/index.html";
+      remomvedonetasklist(taskId);
     }
   };
 
-  //時計を設置
-  const setClock = () => {
-    const clock1 = document.getElementById("clock1");
-    const clock2 = document.getElementById("clock2");
-    const date = new Date();
-    const fulldate = gettoday();
-    const hours = date.getHours();
-    const minutes = date.getMinutes().toString().padStart(2, "0");
-    clock1.innerHTML = `${fulldate} ${hours}:${minutes}`;
-    clock2.innerHTML = `${fulldate}`;
+  const donetasklist = (taskId) => {
+    const taskname = document.getElementById(taskId).innerText;
+    const donetaskDiv = document.createElement("li");
+    const doneList = document.getElementById("donelist");
+    donetaskDiv.setAttribute("class", "font-nsjp font-medium text-xl");
+    donetaskDiv.setAttribute("id", "donelist" + taskId);
+    donetaskDiv.innerHTML = taskname;
+    doneList.appendChild(donetaskDiv);
   };
-  setTimeout(function () {
-    setClock();
-  }, 1000);
+
+  const remomvedonetasklist = (taskId) => {
+    const doneList = document.getElementById("donelist" + taskId);
+    doneList.remove();
+  };
 
   // タスク一覧を取得
   getAllTasksApi().then((data) => {
@@ -661,15 +659,6 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       }
     });
   });
-
-  const gettoday = () => {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = (today.getMonth() + 1).toString().padStart(2, "0");
-    const date = today.getDate().toString().padStart(2, "0");
-    const fulldate = year + "-" + month + "-" + date;
-    return fulldate;
-  };
 
   function addTask() {
     //タスク追加機能

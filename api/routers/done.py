@@ -14,6 +14,7 @@ router = APIRouter()
 @router.put("/task/{task_id}/done", response_model=done_schema.DoneResponse)
 def mark_task_as_done(
     task_id: int,
+    done_date: done_schema.DoneCreate,
     db: Session = Depends(get_db),
     current_user: UserModel = Depends(get_current_user),
 ):
@@ -30,7 +31,7 @@ def mark_task_as_done(
     if done is not None:
         raise HTTPException(status_code=400, detail="Done already exists")
 
-    return done_crud.create_done(db, task_id)
+    return done_crud.create_done(db, done_date, task_id)
 
 
 @router.delete("/task/{task_id}/done", response_model=None)
@@ -51,3 +52,10 @@ def unmark_task_as_done(
         raise HTTPException(status_code=403, detail="Forbidden")
 
     return done_crud.delete_done(db, original=done)
+
+@router.get("/donetask", response_model=list[done_schema.DoneResponse])
+def list_tasks(
+    db: Session = Depends(get_db),
+    current_user: UserModel = Depends(get_current_user),
+):
+    return done_crud.get_multiple_donetasks(db, current_user.id)

@@ -29,7 +29,7 @@ class Done(Base):
     __tablename__ = "dones"
 
     id = Column(Integer, ForeignKey("tasks.id"), primary_key=True)
-    done_date = Column(Date)
+    done_date = Column(Date, nullable=False)
     done_comment = Column(String(1024))
 
     task = relationship("Task", back_populates="done")
