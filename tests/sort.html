@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Elements</title>
+    <style>
+        .item {
+            width: 100px;
+            height: 100px;
+            background-color: grey;
+            margin: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="item" id="item-5">Item 5</div>
+        <div class="item" id="item-3">Item 3</div>
+        <div class="item" id="item-1">Item 1</div>
+        <div class="item" id="item-4">Item 4</div>
+        <div class="item" id="item-2">Item 2</div>
+    </div>
+    <label class="switch">
+        <input type="checkbox" id="sortSwitch">
+        <span class="slider"></span>
+    </label>
+
+    <script>
+        const container = document.getElementById('container');
+        const switchElement = document.getElementById('sortSwitch');
+
+        // スイッチの状態を監視
+        switchElement.addEventListener('change', () => {
+            const itemsArray = Array.from(container.children);
+
+            if (switchElement.checked) {
+                // 昇順に並び替え
+                itemsArray.sort((a, b) => {
+                    const idA = parseInt(a.id.split('-')[1], 10);
+                    const idB = parseInt(b.id.split('-')[1], 10);
+                    return idA - idB;
+                });
+            } else {
+                // 降順に並び替え
+                itemsArray.sort((a, b) => {
+                    const idA = parseInt(a.id.split('-')[1], 10);
+                    const idB = parseInt(b.id.split('-')[1], 10);
+                    return idB - idA;
+                });
+            }
+
+            // コンテナ内の要素を再配置
+            itemsArray.forEach(item => container.appendChild(item));
+        });
+    </script>
+</body>
+</html>

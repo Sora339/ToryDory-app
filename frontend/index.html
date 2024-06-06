@@ -62,14 +62,14 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
           class="h-10 xl:h-12 ml-2 xl:ml-3"
         />
         <div id="my-image" class="ml-auto"></div>
-        <div class="ml-2 w-fit mr-8">
+        <div class="ml-2 w-fit mr-2 xl:mr-8">
           <h1
             id="welcome"
-            class="text-[#023047] font-nsjp font-semibold text-xl mb-1"
+            class="text-[#023047] font-nsjp font-semibold text-sm xl:text-xl xl:mb-1"
           ></h1>
           <button
             onclick="logout()"
-            class="bg-[#8ECAE6] border-2 border-white rounded text-[#023047] font-nsjp font-semibold pl-1 pr-1"
+            class="bg-[#8ECAE6] border-2 border-white rounded text-[#023047] font-nsjp font-semibold text-xs xl:text-base pl-[1px] xl:pl-1 pr-[1px] xl:pr-1"
           >
             ログアウト
           </button>
@@ -97,7 +97,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
             </div>
             <h4
               id="clock1"
-              class="mt-2 xl:mt-4 ml-2 xl:ml-auto xl:mr-4 font-nsjp text-2xl font-bold text-[#023047]"
+              class="mt-2 xl:mt-4 ml-auto mr-2 xl:mr-4 font-nsjp text-sm xl:text-2xl font-bold text-[#023047]"
             ></h4>
           </div>
           <div class="xl:grid grid-cols-3 h-fit xl:h-[400px]">
@@ -312,50 +312,48 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
           >
             タスク作成
           </h4>
-          <div>
+          <div
+            class="bg-[url('../image/maketask.svg')] shadow-md m-3 mb-2 xl:m-4 border-white border-4 rounded bg-cover h-[148px] xl:h-[370px]"
+          >
             <div
-              class="bg-[url('../image/maketask.svg')] shadow-md m-3 mb-2 xl:m-4 border-white border-4 rounded bg-cover h-[148px] xl:h-[370px]"
+              class="w-fit h-fit xl:w-fit  ml-auto xl:ml-auto mr-2 xl:mr-[10%] mt-1 xl:mt-[45px] xl:mb-0"
             >
-              <div
-                class="w-[21vh] xl:w-fit scale-75 xl:scale-100 ml-auto mr-[10%] mt-[50px]"
+              <h3
+                class="font-nsjp font-semibold xl:mb-1 text-xs xl:text-2xl text-[#023047]"
               >
-                <h3
-                  class="font-nsjp font-semibold xl:mb-1 text-sm xl:text-2xl text-[#023047]"
-                >
-                  タスク名
-                </h3>
-                <input
-                  type="text"
-                  class="border-4 shadow border-slate-600 w-[120%] xl:w-[16vw] rounded"
-                  id="taskname"
-                />
-                <div id="megs" class="hidden text-red-600">&nbsp;</div>
-                <h3
-                  class="font-nsjp font-semibold xl:mb-1 text-sm xl:text-2xl text-[#023047]"
-                >
-                  完了日時
-                </h3>
-                <input
-                  type="date"
-                  class="border-4 shadow border-slate-600 w-[120%] xl:w-[16vw] rounded"
-                  id="deadline"
-                  name="deadline"
-                />
-                <h3
-                  class="font-nsjp font-semibold xl:mb-1 text-sm xl:text-2xl text-[#023047]"
-                >
-                  重要度
-                </h3>
-                <input
-                  type="text"
-                  class="border-4 shadow border-slate-600 w-[120%] xl:w-[16vw] rounded"
-                  id="importance"
-                />
-              </div>
+                タスク名
+              </h3>
+              <input
+                type="text"
+                class="border-4 shadow border-slate-600 text-xs xl:text-xl w-44 xl:w-[16vw] rounded"
+                id="taskname"
+              />
+              <!-- <div id="megs" class="hidden text-red-600">&nbsp;</div> -->
+              <h3
+                class="font-nsjp font-semibold xl:mb-1 text-xs xl:text-2xl text-[#023047]"
+              >
+                完了日時
+              </h3>
+              <input
+                type="date"
+                class="border-4 shadow border-slate-600 text-xs xl:text-xl w-full xl:w-[16vw] rounded"
+                id="deadline"
+                name="deadline"
+              />
+              <h3
+                class="font-nsjp font-semibold xl:mb-1 text-xs xl:text-2xl text-[#023047]"
+              >
+                重要度
+              </h3>
+              <input
+                type="text"
+                class="border-4 shadow border-slate-600 text-xs xl:text-xl w-44 xl:w-[16vw] rounded"
+                id="importance"
+              />
             </div>
           </div>
           <button
-            class="block shadow-md xl:hidden w-fit ml-auto mr-auto p-[0.1vw] pl-[4vw] pr-[4vw] pt-0 bg-[#FFB703] border-4 border-[#FB8500] font-nsjp font-semibold text-[#023047] rounded"
+            class="block shadow-md xl:hidden w-fit ml-auto mr-auto mt-4 p-[0.1vw] pl-[4vw] pr-[4vw] pt-0 bg-[#FFB703] border-4 border-[#FB8500] font-nsjp font-semibold text-[#023047] rounded"
             onclick="addTask()"
           >
             作成
@@ -388,20 +386,20 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
             </div>
             <h4
               id="clock2"
-              class="mt-2 xl:mt-4 ml-2 xl:ml-auto xl:mr-4 font-nsjp text-2xl font-bold text-[#023047]"
+              class="mt-2 xl:mt-4 ml-auto mr-2 xl:mr-4 font-nsjp text-sm xl:text-2xl font-bold text-[#023047]"
             ></h4>
           </div>
           <div
             class="bg-[url('../image/makelog.svg')] shadow-md m-3 mb-2 xl:m-4 border-white border-4 rounded bg-cover h-[148px] xl:h-[370px]"
           >
-            <div class="ml-[58%] mt-[15px]">
+            <div class="w-fit ml-auto mr-3 xl:mr-0 xl:ml-[58%] mt-1 xl:mt-[15px]">
               <h3
-                class="font-nsjp font-semibold mb-1 xl:text-2xl text-[#023047]"
+                class="font-nsjp font-semibold mb-1 text-xs xl:text-2xl text-[#023047]"
               >
                 今日完了したタスク
               </h3>
               <div
-                class="h-[15vh] xl:h-[210px] w-[50vw] xl:w-[16vw] bg-white rounded overflow-y-scroll"
+                class="h-[12vh] xl:h-[210px] w-[40vw] xl:w-[16vw] bg-white rounded overflow-y-scroll"
               >
                 <div class="p-8 pt-2">
                   <ul class="list-disc" id="donelist">
@@ -411,7 +409,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
               </div>
             </div>
           </div>
-          <div class="text-center">
+          <div class="text-center mt-4">
             <a href="alllogs.html">
               <button
                 class="xl:hidden shadow-md w-fit ml-auto pl-[2vw] pr-[2vw] bg-[#8ECAE6] border-4 border-white font-nsjp font-semibold text-[#023047] rounded"
@@ -465,19 +463,18 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     handleLoginError();
   }
 
-//時計を動かす
-  setTimeout(function () {
-    setClock();
-  }, 1000);
+  //時計を動かす
+  setInterval(setClock, 1000); // 1秒ごとにupdateClockを呼び出す
+  setClock();
 
   // ユーザー情報を取得
   getMeApi().then((data) => {
     console.log("data:", data);
     const welcomeH1 = document.getElementById("welcome");
     const icon = document.getElementById("my-image");
-    welcomeH1.innerText = `${data.nickname}さん`;
+    welcomeH1.innerText = `${data.nickname}`;
     icon.innerHTML = `
-        <img src="${API_HOST}${data.icon_img}" alt="アイコン画像" class="h-14 w-14 ml-auto rounded-full object-cover">
+        <img src="${API_HOST}${data.icon_img}" alt="アイコン画像" class="h-7 xl:h-14 w-7 xl:w-14 ml-auto rounded-full object-cover">
       `;
     console.log(icon.src);
   });
@@ -485,16 +482,8 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
   let state1 = null; //異なるセット間でD&Dを禁止するためにドラッグ元の親idを保持
 
   const allowDrop = (event) => {
-    // console.log("allowDrop");
     event.preventDefault();
-    // Get the set ID of the dragged element
-    // let draggedSetId = event.dataTransfer.getData("setId");
-    // Get the set ID of the current drop target
     let dropTargetSetId = event.target.closest(".container").id;
-    // console.log(state1);
-    // console.log(dropTargetSetId);
-
-    // Allow drop only if the target set is the same as the dragged element's set
     if (state1 === dropTargetSetId) {
       event.dataTransfer.dropEffect = "move";
     } else {
@@ -506,12 +495,9 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     let statechange = 0;
     event.dataTransfer.setData("text", event.target.id);
     event.dataTransfer.setData("box", event.target.closest(".box").id);
-    // Store the set ID to prevent cross-set drops
     event.dataTransfer.setData("setId", event.target.closest(".container").id);
-    // console.log(event.dataTransfer.getData("setId"));
     state1 = event.target.closest(".container").id;
     statechange = 1;
-    // console.log(event.target.id);
   };
 
   const drop = (event) => {
@@ -521,15 +507,12 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     let setId = event.dataTransfer.getData("setId");
     let element = document.getElementById(data);
 
-    // Get the target element
     let target = event.target;
 
-    // If the target is not a box, find the closest parent box
     while (!target.classList.contains("box") && target.parentElement) {
       target = target.parentElement;
     }
 
-    // Append the dragged element to the target box only if it's in the same set
     if (
       target.classList.contains("box") &&
       target.closest(".container").id === setId
@@ -537,7 +520,6 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       target.appendChild(element);
     }
 
-    // console.log(data);
     console.log(boxdata);
     console.log(target.id);
     if (!target.id.includes("box")) {
@@ -563,13 +545,13 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     ) {
       undoingTaskApi(taskId);
       doneTaskApi(taskId, donedate);
-      donetasklist(taskId);
+      adddonetasklist(taskId);
     } else if (
       (oldstatusId == "box1-1" && newstatusId == "box1-3") ||
       (oldstatusId == "box2-1" && newstatusId == "box2-3")
     ) {
       doneTaskApi(taskId, donedate);
-      donetasklist(taskId);
+      adddonetasklist(taskId);
     } else if (
       (oldstatusId == "box1-3" && newstatusId == "box1-2") ||
       (oldstatusId == "box2-3" && newstatusId == "box2-2")
@@ -591,16 +573,50 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     }
   };
 
-  const donetasklist = (taskId) => {
-    const taskname = document.getElementById(taskId).innerText;
+  //新たにdoneリストに追加
+  const adddonetasklist = (taskId) => {
     const donetaskDiv = document.createElement("li");
     const doneList = document.getElementById("donelist");
     donetaskDiv.setAttribute("class", "font-nsjp font-medium text-xl");
     donetaskDiv.setAttribute("id", "donelist" + taskId);
-    donetaskDiv.innerHTML = taskname;
-    doneList.appendChild(donetaskDiv);
+    const taskDetailUrl = `${API_HOST}/task/${taskId}`;
+    getTaskDetailApi(taskId).then((data) => {
+      donetaskDiv.innerHTML = `
+            ${data.title}
+            `;
+      doneList.appendChild(donetaskDiv);
+      console.log("data:", data.title);
+    });
   };
 
+  //doneリストの読み込み
+  getDonetaskApi().then((data) => {
+    console.log(data);
+    data.forEach((task) => {
+      console.log(task.done_date);
+      const donetaskDiv = document.createElement("li");
+      const doneList = document.getElementById("donelist");
+      donetaskDiv.setAttribute("class", "font-nsjp font-medium text-xl");
+      donetaskDiv.setAttribute("id", "donelist" + `${task.id}`);
+      if (task.done_date == gettoday()) {
+        const taskcommentDiv = document.createElement("div");
+        const taskcommentDivcontainer = document.getElementById(
+          "taskcommentDivcontainer"
+        );
+        //タスクテーブルから該当idのタイトルを取得
+        const taskDetailUrl = `${API_HOST}/task/${task.id}`;
+        getTaskDetailApi(task.id).then((data) => {
+          donetaskDiv.innerHTML = `
+            ${data.title}
+            `;
+          doneList.appendChild(donetaskDiv);
+          console.log("data:", data.title);
+        });
+      }
+    });
+  });
+
+  //doneリストから削除
   const remomvedonetasklist = (taskId) => {
     const doneList = document.getElementById("donelist" + taskId);
     doneList.remove();
@@ -645,7 +661,6 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
           taskList_today_doing.appendChild(taskDiv);
         } else if (`${task.done}` == "true") {
           taskList_today_done.appendChild(taskDiv);
-          doneList.appendChild(donetaskDiv);
         }
       } else if (fulldate != `${task.due_date}`) {
         if (`${task.doing}` == "false" && `${task.done}` == "false") {
@@ -654,14 +669,13 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
           taskList_all_doing.appendChild(taskDiv);
         } else if (`${task.done}` == "true") {
           taskList_all_done.appendChild(taskDiv);
-          doneList.appendChild(donetaskDiv);
         }
       }
     });
   });
 
+  //タスク追加機能
   function addTask() {
-    //タスク追加機能
     const megsDiv = document.getElementById("megs");
     const taskname = document.getElementById("taskname");
     const deadline = document.getElementById("deadline");
@@ -723,9 +737,9 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       });
   };
 
+  //タスク削除機能
   const removeTask = (e) => {
     event.stopPropagation();
-    //タスク削除機能
     const task = document.getElementById(e);
     console.log(e);
     // console.log(document.getElementById(e));

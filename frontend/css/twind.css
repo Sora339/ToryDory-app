@@ -803,10 +803,6 @@ html {
   margin-bottom: 1.5rem;
 }
 
-.mb-8{
-  margin-bottom: 2rem;
-}
-
 .ml-0{
   margin-left: 0px;
 }
@@ -827,10 +823,6 @@ html {
   margin-left: 2rem;
 }
 
-.ml-\[58\%\]{
-  margin-left: 58%;
-}
-
 .ml-auto{
   margin-left: auto;
 }
@@ -845,6 +837,10 @@ html {
 
 .mr-2{
   margin-right: 0.5rem;
+}
+
+.mr-3{
+  margin-right: 0.75rem;
 }
 
 .mr-4{
@@ -871,20 +867,16 @@ html {
   margin-top: 0.5rem;
 }
 
+.mt-4{
+  margin-top: 1rem;
+}
+
 .mt-6{
   margin-top: 1.5rem;
 }
 
 .mt-8{
   margin-top: 2rem;
-}
-
-.mt-\[15px\]{
-  margin-top: 15px;
-}
-
-.mt-\[50px\]{
-  margin-top: 50px;
 }
 
 .box-border{
@@ -1034,16 +1026,16 @@ html {
   height: 2.25rem;
 }
 
+.h-\[100px\]{
+  height: 100px;
+}
+
+.h-\[12vh\]{
+  height: 12vh;
+}
+
 .h-\[148px\]{
   height: 148px;
-}
-
-.h-\[150px\]{
-  height: 150px;
-}
-
-.h-\[15vh\]{
-  height: 15vh;
 }
 
 .h-\[200px\]{
@@ -1071,36 +1063,32 @@ html {
   width: 3.5rem;
 }
 
-.w-\[120\%\]{
-  width: 120%;
+.w-44{
+  width: 11rem;
 }
 
-.w-\[150px\]{
-  width: 150px;
+.w-9{
+  width: 2.25rem;
+}
+
+.w-\[100px\]{
+  width: 100px;
 }
 
 .w-\[200px\]{
   width: 200px;
 }
 
-.w-\[21vh\]{
-  width: 21vh;
+.w-\[40vw\]{
+  width: 40vw;
 }
 
 .w-\[50\%\]{
   width: 50%;
 }
 
-.w-\[50vw\]{
-  width: 50vw;
-}
-
 .w-\[75vw\]{
   width: 75vw;
-}
-
-.w-\[\]{
-  width: ;
 }
 
 .w-\[this-is\\\\\]{
@@ -1126,6 +1114,14 @@ html {
 
 .w-full{
   width: 100%;
+}
+
+.w-8{
+  width: 2rem;
+}
+
+.w-7{
+  width: 1.75rem;
 }
 
 .flex-shrink{
@@ -2242,8 +2238,8 @@ html {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-\[url\(\'\.\.\/image\/IMG_7822\.PNG\'\)\]{
-  background-image: url('../image/IMG_7822.PNG');
+.bg-\[url\(\'\'\)\]{
+  background-image: url('');
 }
 
 .bg-\[url\(\'\.\.\/image\/makelog\.svg\'\)\]{
@@ -2252,34 +2248,6 @@ html {
 
 .bg-\[url\(\'\.\.\/image\/maketask\.svg\'\)\]{
   background-image: url('../image/maketask.svg');
-}
-
-.bg-\[url\(\'\'\)\]{
-  background-image: url('');
-}
-
-.bg-\[url\(\'\$\'\)\]{
-  background-image: url('$');
-}
-
-.bg-\[url\(\'\$\{\}\'\)\]{
-  background-image: url('${}');
-}
-
-.bg-\[url\(\'\$\{f\}\'\)\]{
-  background-image: url('${f}');
-}
-
-.bg-\[url\(\'\$\{URL\.createObjectURL\(file\)\}\'\)\]{
-  background-image: url('${URL.createObjectURL(file)}');
-}
-
-.bg-\[url\(\'\`\`\'\)\]{
-  background-image: url('``');
-}
-
-.bg-\[url\(\'\`URL\.createObjectURL\(file\)\`\'\)\]{
-  background-image: url('`URL.createObjectURL(file)`');
 }
 
 .decoration-slice{
@@ -2432,6 +2400,10 @@ html {
   padding-bottom: 0.125rem;
 }
 
+.pb-1{
+  padding-bottom: 0.25rem;
+}
+
 .pb-2{
   padding-bottom: 0.5rem;
 }
@@ -2452,8 +2424,8 @@ html {
   padding-left: 0.5rem;
 }
 
-.pl-\[1\.5vw\]{
-  padding-left: 1.5vw;
+.pl-\[1px\]{
+  padding-left: 1px;
 }
 
 .pl-\[2vw\]{
@@ -2476,8 +2448,8 @@ html {
   padding-right: 0.5rem;
 }
 
-.pr-\[1\.5vw\]{
-  padding-right: 1.5vw;
+.pr-\[1px\]{
+  padding-right: 1px;
 }
 
 .pr-\[2vw\]{
@@ -2568,6 +2540,11 @@ html {
   font-family: Pattaya, sans-serif;
 }
 
+.\!text-4xl{
+  font-size: 2.25rem !important;
+  line-height: 2.5rem !important;
+}
+
 .\!text-6xl{
   font-size: 3.75rem !important;
   line-height: 1 !important;
@@ -2616,6 +2593,11 @@ html {
 .text-xl{
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-xs{
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .font-bold{
@@ -3346,6 +3328,10 @@ html {
     margin-left: 10%;
   }
 
+  .xl\:ml-\[58\%\]{
+    margin-left: 58%;
+  }
+
   .xl\:ml-auto{
     margin-left: auto;
   }
@@ -3408,6 +3394,22 @@ html {
 
   .xl\:mt-4{
     margin-top: 1rem;
+  }
+
+  .xl\:mt-6{
+    margin-top: 1.5rem;
+  }
+
+  .xl\:mt-8{
+    margin-top: 2rem;
+  }
+
+  .xl\:mt-\[15px\]{
+    margin-top: 15px;
+  }
+
+  .xl\:mt-\[45px\]{
+    margin-top: 45px;
   }
 
   .xl\:block{
@@ -3474,6 +3476,10 @@ html {
     height: 2.25rem;
   }
 
+  .xl\:h-\[150px\]{
+    height: 150px;
+  }
+
   .xl\:h-\[210px\]{
     height: 210px;
   }
@@ -3502,6 +3508,14 @@ html {
     height: 100%;
   }
 
+  .xl\:w-14{
+    width: 3.5rem;
+  }
+
+  .xl\:w-\[150px\]{
+    width: 150px;
+  }
+
   .xl\:w-\[16vw\]{
     width: 16vw;
   }
@@ -3525,12 +3539,6 @@ html {
 
   .xl\:w-full{
     width: 100%;
-  }
-
-  .xl\:scale-100{
-    --tw-scale-x: 1;
-    --tw-scale-y: 1;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
   .xl\:scale-125{
@@ -3563,8 +3571,20 @@ html {
     padding-bottom: 0px;
   }
 
+  .xl\:pb-2{
+    padding-bottom: 0.5rem;
+  }
+
   .xl\:pb-20{
     padding-bottom: 5rem;
+  }
+
+  .xl\:pl-1{
+    padding-left: 0.25rem;
+  }
+
+  .xl\:pl-\[1\.5vw\]{
+    padding-left: 1.5vw;
   }
 
   .xl\:pl-\[1vw\]{
@@ -3573,6 +3593,14 @@ html {
 
   .xl\:pl-\[2vw\]{
     padding-left: 2vw;
+  }
+
+  .xl\:pr-1{
+    padding-right: 0.25rem;
+  }
+
+  .xl\:pr-\[1\.5vw\]{
+    padding-right: 1.5vw;
   }
 
   .xl\:pr-\[1vw\]{
@@ -3587,8 +3615,17 @@ html {
     padding-top: 0px;
   }
 
+  .xl\:pt-1{
+    padding-top: 0.25rem;
+  }
+
   .xl\:pt-4{
     padding-top: 1rem;
+  }
+
+  .xl\:\!text-6xl{
+    font-size: 3.75rem !important;
+    line-height: 1 !important;
   }
 
   .xl\:text-2xl{
@@ -3629,6 +3666,11 @@ html {
 
   .xl\:text-\[70\%\]{
     font-size: 70%;
+  }
+
+  .xl\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .xl\:text-lg{

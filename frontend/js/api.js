@@ -36,7 +36,7 @@ const signUpApi = (data) => {
       return res.json();
     } else if (res.status === 400) {
       console.error(res);
-      throw new Error("入力されたメールアドレスは既に登録されています");
+      throw new Error("入力されたメールアドレスは\n既に登録されています");
     } else {
       console.error(res);
       handleOtherError();
@@ -373,6 +373,82 @@ const deleteTaskApi = (taskId) => {
 //完了タスクの一覧を取得する
 const getDonetaskApi = () => {
   const url = `${API_HOST}/donetask`;
+  return fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else if (res.status === 401) {
+      handleLoginError();
+    } else {
+      console.error(res);
+      handleOtherError();
+    }
+  });
+};
+
+/**
+ * 日記を作成するAPI
+ */
+const createDiaryApi = (data) => {
+  const url = `${API_HOST}/diary`
+  return fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    body: JSON.stringify(data),
+  }).then((res) => {
+    if (res.ok) {
+      return res.json()
+    } else if (res.status === 401) {
+      handleLoginError()
+    } else {
+      console.error(res)
+      handleOtherError()
+    }
+  })
+}
+
+/**
+ * アイコンの画像を更新するAPI
+ */
+
+const updateDiaryImageApi = (diaryId, file) => {
+  const url = `${API_HOST}/diary/${diaryId}/image`;
+  const formData = new FormData();
+  formData.append("diary_img_path", file); // キー名がAPIで期待されているものと一致していることを確認
+  console.log(formData);
+  return fetch(url, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: formData,
+  }).then((res) => {
+    if (res.ok) {
+      return res.json();
+    } else if (res.status === 401) {
+      handleLoginError();
+    } else if (res.status === 403) {
+      handleForbiddenError();
+    } else {
+      console.error(res);
+      handleOtherError();
+    }
+  }).catch((error) => {
+    console.error("Fetch error:", error);
+  });
+};
+
+//日記一覧を取得
+
+const getAlldiaryApi = () => {
+  const url = `${API_HOST}/diarys`;
   return fetch(url, {
     method: "GET",
     headers: {

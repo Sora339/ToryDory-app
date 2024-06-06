@@ -73,7 +73,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         <div class="xl:ml-4 xl:mr-4 pt-2 xl:pt-4">
           <div class="ml-2 xl:ml-4 mb-2 xl:mb-4">
             <h2
-              class="text-[#023047] text-[170%] xl:text-[300%] font-pattaya h-8 xl:h-16"
+              class="text-[#023047] text-[170%] xl:text-[300%] font-pattaya h-9 xl:h-16"
             >
               Seafarer Registration
             </h2>
@@ -83,15 +83,15 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
               新規登録
             </h4>
           </div>
-          <div class="xl:ml-[10%] xl:mr-[10%] mb-8">
+          <div class="xl:ml-[10%] xl:mr-[10%] mb-2 xl:mb-8">
             <img
               src="image\Hero.svg"
               alt="ヒーロー画像"
               class="block shadow-md ml-4 xl:ml-0 mr-4 xl:mr-0 xl:mt-2 rounded border-4 border-white"
             />
           </div>
-          <div class="mt-8 ml-auto mr-auto w-fit xl:w-fit scale-100">
-            <div id="megs" style="color: red">&nbsp;</div>
+          <div class="xl:mt-8 ml-auto mr-auto w-fit xl:w-fit scale-100">
+            <div id="megs" class="text-red-600 text-sm xl:text-base text-center">&nbsp;</div>
             <label
               class="text-left font-nsjp font-semibold xl:mb-1 text-sm xl:text-2xl text-slate-800"
               for="nickname"
@@ -146,11 +146,11 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
             <br />
             <figure
               id="figure"
-              class="ml-auto mr-auto mb-2 flex flex-col h-[150px] w-[150px] items-center text-center justify-center bg-slate-200 rounded-full"
+              class="ml-auto mr-auto mb-1 xl:mb-2 flex flex-col h-[100px] xl:h-[150px] w-[100px] xl:w-[150px] items-center text-center justify-center bg-slate-200 rounded-full"
             >
               <figcaption>
                 <span
-                  class="material-symbols-outlined !text-6xl text-slate-600"
+                  class="material-symbols-outlined !text-4xl xl:!text-6xl text-slate-600"
                   id="upload-button"
                 >
                   account_circle
@@ -162,12 +162,12 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
               type="file"
               id="icon-image-input"
               name="icon_img"
-              class="xl:text-xl"
+              class="text-xs xl:text-xl"
               accept="image/*"
             />
-            <div class="mt-6 justify ml-auto text-center">
+            <div class="mt-4 xl:mt-6 justify ml-auto text-center">
               <button
-                class="text-2xl shadow-md w-fit pl-[1.5vw] pr-[1.5vw] pb-2 pt-1 bg-[#8ECAE6] border-4 border-white font-nsjp font-semibold text-[#023047] rounded"
+                class="xl:text-2xl shadow-md w-fit pl-2 xl:pl-[1.5vw] pr-2 xl:pr-[1.5vw] pb-1 xl:pb-2 xl:pt-1 bg-[#8ECAE6] border-2 xl:border-4 border-white font-nsjp font-semibold text-[#023047] rounded"
                 onclick="register()"
               >
                 新規登録
@@ -177,7 +177,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         </div>
       </div>
     </div>
-    <div id="footer" class="flex items-center w-fit mx-auto mb-4">
+    <div id="footer" class="flex items-center w-fit mx-auto xl:mb-4">
       <img
         src="image/marulogo.svg"
         alt="marulogo"

@@ -111,50 +111,27 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
                   <input
                     type="date"
                     class="border-4 shadow-md border-slate-600 xl:w-[16vw] rounded mr-2 xl:mr-4"
+                    id="searchDate"
                   />
                   <button
                     class="w-fit shadow-md xl:ml-auto xl:mr-auto xl:p-[0.1vw] pl-2 xl:pl-[2vw] pr-2 xl:pr-[2vw] pt-0 xl:pt-0 bg-[#FFB703] border-4 border-[#FB8500] xl:text-[1.5vw] font-nsjp font-semibold text-[#023047] rounded"
+                    onclick="searchdiary()"
                   >
                     検索
                   </button>
                 </div>
               </div>
             </div>
-            <div
-              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
-            >
-              <div class="bg-slate-300 w-[50%]">
-                <img
-                  src="image\IMG_7834.jpg"
-                  alt="Tailwind_logo"
-                  class="h-full object-contain ml-auto mr-auto"
-                />
+            <div class="flex items-center mb-4">
+              <div class="slider-switch">
+                <input type="checkbox" id="toggle" class="slider-input" />
+                <label for="toggle" class="slider-label"></label>
               </div>
-              <div class="bg-white shadow-md h-full xl:h-full w-full"></div>
+              <span id="sortstatus" class="h-fit ml-1 text-[#023047] font-nsjp font-medium">新しい順</span>
             </div>
-            <div
-              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
-            >
-              <div class="bg-slate-300 w-[50%]">
-                <img
-                  src="image\IMG_7943.jpg"
-                  alt="Tailwind_logo"
-                  class="h-full object-contain ml-auto mr-auto"
-                />
-              </div>
-              <div class="bg-white shadow-md h-full xl:h-full w-full"></div>
-            </div>
-            <div
-              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
-            >
-              <div class="bg-slate-300 w-[50%]">
-                <img
-                  src="image\IMG_7822.PNG"
-                  alt="Tailwind_logo"
-                  class="h-full object-contain ml-auto mr-auto"
-                />
-              </div>
-              <div class="bg-white shadow-md h-full xl:h-full w-full"></div>
+            <div id="diaryDivcontainer">
+              <div id="searchResultcontainer"></div>
+              <!-- ここに日記一覧が追加 -->
             </div>
           </div>
         </div>
@@ -163,11 +140,13 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         >
           <button
             class="shadow-md w-fit xl:w-fit mr-[10%] xl:mr-[40%] p-[1%] xl:p-[0.1vw] pl-[4%] xl:pl-[2vw] pr-[4%] xl:pr-[2vw] pt-0 xl:pt-0 bg-[#FFB703] border-4 border-[#FB8500] xl:text-[1.5vw] font-nsjp font-semibold text-[#023047] rounded"
+            id="showPrevious"
           >
             前へ
           </button>
           <button
             class="shadow-md w-fit xl:w-fit p-[1%] xl:p-[0.1vw] pl-[4%] xl:pl-[2vw] pr-[4%] xl:pr-[2vw] pt-0 xl:pt-0 bg-[#FFB703] border-4 border-[#FB8500] xl:text-[1.5vw] font-nsjp font-semibold text-[#023047] rounded"
+            id="showNext"
           >
             次へ
           </button>
@@ -204,7 +183,162 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     getMeApi().then((data) => {
       console.log("data:", data);
       const welcomeH1 = document.getElementById("welcome");
-      welcomeH1.innerText = `ようこそ、${data.nickname}さん`;
+      const icon = document.getElementById("my-image");
+      welcomeH1.innerText = `${data.nickname}さん`;
+      icon.innerHTML = `
+        <img src="${API_HOST}${data.icon_img}" alt="アイコン画像" class="h-14 w-14 ml-auto rounded-full object-cover">
+      `;
+      console.log(icon.src);
     });
+
+    //日記の一覧を表示
+    getAlldiaryApi().then((data) => {
+      console.log(data);
+      data.forEach((diary) => {
+        const diarytDiv = document.createElement("div");
+        diarytDiv.className = "diaryDiv";
+        diarytDiv.id = diary.id;
+        const diaryDivcontainer = document.getElementById("diaryDivcontainer");
+        diarytDiv.innerHTML = `
+          <div
+              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
+            >
+              <div class="bg-slate-300 w-[50%]">
+                <img
+                  src="${API_HOST}${diary.diary_img}"
+                  alt=""
+                  class="h-full object-contain ml-auto mr-auto"
+                />
+              </div>
+              <div class="bg-white shadow-md h-full xl:h-full w-full p-2 overflow-y-scroll">
+                <span class="block pb-2 w-fit ml-auto text-2xl text-[#023047] font-nsjp font-semibold">${diary.date}</span>${diary.main_text}</div>
+              </div>
+            </div>
+          `;
+        diaryDivcontainer.appendChild(diarytDiv);
+      });
+      // IDを基に要素を降順にソート
+      const switchElement = document.getElementById("toggle");
+
+      // スイッチの状態を監視
+      switchElement.addEventListener("change", () => {
+        const sortstatus = document.getElementById("sortstatus");
+        console.log("change");
+        if (switchElement.checked) {
+          // 昇順に並び替え
+          sortstatus.innerText = "古い順"
+          itemsArray.sort((a, b) => {
+            return a.id - b.id;
+          });
+        } else {
+          // 降順に並び替え
+          sortstatus.innerText = "新しい順"
+          itemsArray.sort((a, b) => {
+            return b.id - a.id;
+          });
+        }
+        // コンテナ内の要素を再配置
+        itemsArray.forEach((item) => container.appendChild(item));
+        showItems();
+      });
+
+      const totalItems = data.length; // 表示する要素の総数
+      const itemsPerPage = 7; // 一度に表示する要素の数
+      let currentPage = 0; // 現在のページ
+      // 要素を表示する関数
+      function showItems() {
+        console.log("制限表示");
+        // 全要素を一旦非表示にする
+        const allItems = document.querySelectorAll(".diaryDiv");
+        allItems.forEach((item) => (item.style.display = "none"));
+
+        // 現在のページに対応する要素を表示
+        const start = currentPage * itemsPerPage;
+        const end = Math.min(start + itemsPerPage, totalItems);
+        for (let i = start; i < end; i++) {
+          allItems[i].style.display = "block";
+        }
+      }
+
+      // 「次へ」「前へ」ボタンのハンドラ
+      const nbtn = document.getElementById("showNext");
+      const pbtn = document.getElementById("showPrevious");
+
+      pbtn.addEventListener(
+        "click",
+        function showPrevious() {
+          if (currentPage > 0) {
+            currentPage--;
+            showItems();
+          }
+        },
+        false
+      );
+
+      nbtn.addEventListener(
+        "click",
+        function showNext() {
+          const totalPages = Math.ceil(totalItems / itemsPerPage);
+          if (currentPage < totalPages - 1) {
+            currentPage++;
+            showItems();
+          }
+        },
+        false
+      );
+
+      // 初期表示
+      const container = document.getElementById("diaryDivcontainer");
+      const itemsArray = Array.from(container.children);
+      itemsArray.sort((a, b) => {
+        return b.id - a.id;
+      });
+      itemsArray.forEach((item) => container.appendChild(item));
+      showItems();
+    });
+
+    //日記の検索
+    const searchdiary = () => {
+      const searchDate = document.getElementById("searchDate").value;
+      const nowsearchResultcontainer = document.getElementById(
+        "searchResultcontainer"
+      );
+      if (nowsearchResultcontainer.childNodes.length > 0) {
+        console.log("havechild");
+        while (nowsearchResultcontainer.hasChildNodes()) {
+          nowsearchResultcontainer.removeChild(
+            nowsearchResultcontainer.lastChild
+          );
+        }
+      }
+      getAlldiaryApi().then((data) => {
+        console.log(data);
+        data.forEach((diary) => {
+          if (searchDate == diary.date) {
+            const diarytDiv = document.createElement("div");
+            const searchResultcontainer = document.getElementById(
+              "searchResultcontainer"
+            );
+            diarytDiv.innerHTML = `
+              <div
+                  class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
+                >
+                  <div class="bg-slate-300 w-[50%]">
+                    <img
+                      src="${API_HOST}${diary.diary_img}"
+                      alt=""
+                      class="h-full object-contain ml-auto mr-auto"
+                    />
+                  </div>
+                  <div class="bg-white shadow-md h-full xl:h-full w-full p-2 overflow-y-scroll">
+                    <span class="block pb-2 w-fit ml-auto text-2xl text-[#023047] font-nsjp font-semibold">${diary.date}</span>${diary.main_text}</div>
+                  </div>
+                </div>
+              `;
+            searchResultcontainer.appendChild(diarytDiv);
+          }
+        });
+      });
+    };
   </script>
 </html>
