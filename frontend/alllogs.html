@@ -122,6 +122,13 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
                 </div>
               </div>
             </div>
+            <div class="flex items-center mb-4">
+              <div class="slider-switch">
+                <input type="checkbox" id="toggle" class="slider-input" />
+                <label for="toggle" class="slider-label"></label>
+              </div>
+              <span id="sortstatus" class="h-fit ml-1 text-[#023047] font-nsjp font-medium">新しい順</span>
+            </div>
             <div id="diaryDivcontainer">
               <div id="searchResultcontainer"></div>
               <!-- ここに日記一覧が追加 -->
@@ -209,26 +216,38 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
             </div>
           `;
         diaryDivcontainer.appendChild(diarytDiv);
-        if (data.length > 7) {
-          diarytDiv.style.display = "none";
-        }
       });
-      const container = document.getElementById("diaryDivcontainer");
-      const itemsArray = Array.from(container.children);
-
       // IDを基に要素を降順にソート
-      itemsArray.sort((a, b) => {
-        return b.id - a.id;
-      });
+      const switchElement = document.getElementById("toggle");
 
-      // コンテナ内の要素を再配置
-      itemsArray.forEach((item) => container.appendChild(item));
+      // スイッチの状態を監視
+      switchElement.addEventListener("change", () => {
+        const sortstatus = document.getElementById("sortstatus");
+        console.log("change");
+        if (switchElement.checked) {
+          // 昇順に並び替え
+          sortstatus.innerText = "古い順"
+          itemsArray.sort((a, b) => {
+            return a.id - b.id;
+          });
+        } else {
+          // 降順に並び替え
+          sortstatus.innerText = "新しい順"
+          itemsArray.sort((a, b) => {
+            return b.id - a.id;
+          });
+        }
+        // コンテナ内の要素を再配置
+        itemsArray.forEach((item) => container.appendChild(item));
+        showItems();
+      });
 
       const totalItems = data.length; // 表示する要素の総数
       const itemsPerPage = 7; // 一度に表示する要素の数
       let currentPage = 0; // 現在のページ
       // 要素を表示する関数
       function showItems() {
+        console.log("制限表示");
         // 全要素を一旦非表示にする
         const allItems = document.querySelectorAll(".diaryDiv");
         allItems.forEach((item) => (item.style.display = "none"));
@@ -241,7 +260,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         }
       }
 
-      // 「次へ」ボタンのハンドラ
+      // 「次へ」「前へ」ボタンのハンドラ
       const nbtn = document.getElementById("showNext");
       const pbtn = document.getElementById("showPrevious");
 
@@ -269,9 +288,14 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       );
 
       // 初期表示
+      const container = document.getElementById("diaryDivcontainer");
+      const itemsArray = Array.from(container.children);
+      itemsArray.sort((a, b) => {
+        return b.id - a.id;
+      });
+      itemsArray.forEach((item) => container.appendChild(item));
       showItems();
     });
-    //日記表示のページング
 
     //日記の検索
     const searchdiary = () => {

@@ -219,7 +219,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       console.log("data:", data);
       const welcomeH1 = document.getElementById("welcome");
       const icon = document.getElementById("my-image");
-      welcomeH1.innerText = `${data.nickname}さん`;
+      welcomeH1.innerText = `${data.nickname}`;
       icon.innerHTML = `
         <img src="${API_HOST}${data.icon_img}" alt="アイコン画像" class="h-14 w-14 ml-auto rounded-full object-cover">
       `;

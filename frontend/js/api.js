@@ -36,7 +36,7 @@ const signUpApi = (data) => {
       return res.json();
     } else if (res.status === 400) {
       console.error(res);
-      throw new Error("入力されたメールアドレスは既に登録されています");
+      throw new Error("入力されたメールアドレスは\n既に登録されています");
     } else {
       console.error(res);
       handleOtherError();
