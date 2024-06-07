@@ -1,7 +1,7 @@
 <!-- 
 Tailwindのおまじない
 cd frontend
-npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
+npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
 -->
 
 <!DOCTYPE html>
@@ -577,7 +577,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
   const adddonetasklist = (taskId) => {
     const donetaskDiv = document.createElement("li");
     const doneList = document.getElementById("donelist");
-    donetaskDiv.setAttribute("class", "font-nsjp font-medium text-xl");
+    donetaskDiv.setAttribute("class", "font-nsjp font-medium text-xs xl:text-xl");
     donetaskDiv.setAttribute("id", "donelist" + taskId);
     const taskDetailUrl = `${API_HOST}/task/${taskId}`;
     getTaskDetailApi(taskId).then((data) => {
@@ -590,13 +590,13 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
   };
 
   //doneリストの読み込み
-  getDonetaskApi().then((data) => {
+  getDonetaskslistApi().then((data) => {
     console.log(data);
     data.forEach((task) => {
       console.log(task.done_date);
       const donetaskDiv = document.createElement("li");
       const doneList = document.getElementById("donelist");
-      donetaskDiv.setAttribute("class", "font-nsjp font-medium text-xl");
+      donetaskDiv.setAttribute("class", "font-nsjp font-medium text-xs xl:text-xl");
       donetaskDiv.setAttribute("id", "donelist" + `${task.id}`);
       if (task.done_date == gettoday()) {
         const taskcommentDiv = document.createElement("div");
@@ -623,6 +623,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
   };
 
   // タスク一覧を取得
+  // 未実装:完了したタスクのうち、その日完了したタスクのみを表示する。(id指定で完了日を取得するAPIを実装)
   getAllTasksApi().then((data) => {
     const taskList_today_todo = document.getElementById("box1-1");
     const taskList_today_doing = document.getElementById("box1-2");
@@ -633,8 +634,6 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     console.log(data);
     data.forEach((task) => {
       const taskDiv = document.createElement("div");
-      const donetaskDiv = document.createElement("li");
-      const doneList = document.getElementById("donelist");
       taskDiv.setAttribute(
         "class",
         "group item p-[5px] border-[1px] border-solid border-[#000] cursor-grab bg-[#f0f0f0] rounded xl:relative"
@@ -648,11 +647,6 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       taskDiv.setAttribute("ondragstart", "drag(event)");
       taskDiv.setAttribute("type", "button");
       taskDiv.setAttribute("onclick", "detail(this)");
-      donetaskDiv.setAttribute("class", "font-nsjp font-medium text-xl");
-      donetaskDiv.setAttribute("id", "donelist" + `${task.id}`);
-      donetaskDiv.innerHTML = `
-      ${task.title}
-      `;
       const fulldate = gettoday();
       if (fulldate == `${task.due_date}`) {
         if (`${task.doing}` == "false" && `${task.done}` == "false") {
@@ -761,4 +755,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
   const reload = () => {
     location.href = "/index.html";
   };
+
+  //未実装:タスク編集機能
+  //タスク詳細表示後、編集アイコンをクリックでタスク作成エリアに現在の設定が表示されて書き換えることができる。
 </script>

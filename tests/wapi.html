@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>api</title>
+  </head>
+  <body>
+    <script>
+      // APIのエンドポイント
+      const apiUrl = "https://weather.tsukumijima.net/api/forecast/city/140010";
+
+      // Fetch APIを使用してデータをリクエストする関数
+      async function getWeatherForecast() {
+        try {
+          const response = await fetch(apiUrl, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          // レスポンスが正常に返ってきたか確認
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          // JSONデータを取得
+          const data = await response.json();
+
+          // forecastの最初の要素のtelopをロギング
+          if (data.forecasts && data.forecasts.length > 0) {
+            console.log(data.forecasts[0].telop);
+          } else {
+            console.log("Forecast data is not available.");
+          }
+          return "神奈川の天気は"+data.forecasts[0].telop;
+        } catch (error) {
+          console.error("Error fetching weather forecast data: ", error);
+        }
+      }
+
+      // 関数を呼び出してデータを取得
+      getWeatherForecast();
+    </script>
+  </body>
+</html>

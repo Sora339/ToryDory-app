@@ -371,7 +371,7 @@ const deleteTaskApi = (taskId) => {
 };
 
 //完了タスクの一覧を取得する
-const getDonetaskApi = () => {
+const getDonetaskslistApi = () => {
   const url = `${API_HOST}/donetask`;
   return fetch(url, {
     method: "GET",
