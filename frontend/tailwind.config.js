@@ -5,7 +5,8 @@ module.exports = {
     extend: {},
     fontFamily: {
       pattaya : ['Pattaya', 'sans-serif'],
-      nsjp : ['Noto Sans JP', 'sans-serif']
+      nsjp : ['Noto Sans JP', 'sans-serif'],
+      zen : ['Zen Kurenaido', 'sans-serif'],
     },
   },
   plugins: [],

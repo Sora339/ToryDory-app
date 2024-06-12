@@ -8,6 +8,7 @@
   html {
     font-family: "Pattaya", sans-serif;
     font-family: "Noto Sans JP", sans-serif;
+    font-family: "Zen Kurenaido", sans-serif;
   }
 }
 
@@ -15,7 +16,7 @@
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
-/* styles.css */
+/* スライドスイッチ */
 
 .slider-switch {
   position: relative;
@@ -60,4 +61,14 @@
 .slider-input:checked + .slider-label:before {
   transform: translateX(26px);
 }
+
+.sortb {
+  zoom: 0.75;
+  margin-left: 10px;
+  @media (min-width: 1280px) {
+    zoom: 1;
+    margin-left: 0;
+  }
+}
+
 
