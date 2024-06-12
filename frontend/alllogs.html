@@ -25,6 +25,10 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap"
+      rel="stylesheet"
+    />
     <title>日記一覧｜ToryDory</title>
     <link rel="icon" href="image/marulogo.ico" />
 
@@ -32,7 +36,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     <script type="text/javascript" src="/js/api.js"></script>
   </head>
   <body class="bg-slate-200">
-    <div id="header" class="relative h-[56px] xl:h-[72px]">
+    <div id="header" class="relative h-[56px]xl:h-[72px]">
       <div>
         <div class="bg-[#8ECAE6] h-5 xl:h-6"></div>
         <div class="bg-[#219EBC] h-4 xl:h-5"></div>
@@ -58,14 +62,14 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
           class="h-10 xl:h-12 ml-2 xl:ml-3"
         />
         <div id="my-image" class="ml-auto"></div>
-        <div class="ml-2 w-fit mr-8">
+        <div class="ml-2 w-fit mr-2 xl:mr-8">
           <h1
             id="welcome"
-            class="text-[#023047] font-nsjp font-semibold text-xl mb-1"
+            class="text-[#023047] font-nsjp font-semibold text-sm xl:text-xl xl:mb-1"
           ></h1>
           <button
             onclick="logout()"
-            class="bg-[#8ECAE6] border-2 border-white rounded text-[#023047] font-nsjp font-semibold pl-1 pr-1"
+            class="bg-[#8ECAE6] border-2 border-white rounded text-[#023047] font-nsjp font-semibold text-xs xl:text-base pl-[1px] xl:pl-1 pr-[1px] xl:pr-1"
           >
             ログアウト
           </button>
@@ -77,7 +81,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       class="mt-2 xl:mt-0 ml-0 xl:ml-28 mr-0 xl:mr-28 mb-6 xl:mb-8"
     >
       <div
-        class="bg-[#68b0ab] shadow-lg pb-6 xl:pb-20 mr-2 xl:mr-0 ml-2 xl:ml-0 mb-4 xl:mb-10 rounded-b"
+        class="bg-[#68b0ab] shadow-lg pb-6 xl:pb-20 mr-2 xl:mr-0 ml-2 xl:ml-0 mb-4 xl:mb-10 xl:rounded-b rounded"
       >
         <div class="xl:ml-4 xl:mr-4 pt-2 xl:pt-4">
           <div class="ml-2 xl:ml-4 mb-2 xl:mb-4">
@@ -93,7 +97,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
             </h4>
           </div>
           <div class="xl:ml-[10%] xl:mr-[10%]">
-            <div class="relative mb-6 xl:mb-0">
+            <div class="relative mb-2 xl:mb-0">
               <img
                 src="image/alllog_main.svg"
                 alt="makelog"
@@ -110,11 +114,11 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
                 <div class="flex">
                   <input
                     type="date"
-                    class="border-4 shadow-md border-slate-600 xl:w-[16vw] rounded mr-2 xl:mr-4"
+                    class="border-4 shadow-md border-slate-600 w-[120%] xl:w-[16vw] rounded mr-2 xl:mr-4 font-nsjp"
                     id="searchDate"
                   />
                   <button
-                    class="w-fit shadow-md xl:ml-auto xl:mr-auto xl:p-[0.1vw] pl-2 xl:pl-[2vw] pr-2 xl:pr-[2vw] pt-0 xl:pt-0 bg-[#FFB703] border-4 border-[#FB8500] xl:text-[1.5vw] font-nsjp font-semibold text-[#023047] rounded"
+                    class="w-20 xl:w-fit shadow-md xl:ml-auto xl:mr-auto xl:p-[0.1vw] pl-2 xl:pl-[2vw] pr-2 xl:pr-[2vw] pt-0 xl:pt-0 bg-[#FFB703] border-4 border-[#FB8500] xl:text-[1.5vw] font-nsjp font-semibold text-[#023047] rounded"
                     onclick="searchdiary()"
                   >
                     検索
@@ -122,12 +126,16 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
                 </div>
               </div>
             </div>
-            <div class="flex items-center mb-4">
+            <div class="sortb flex items-center mb-2 xl:mb-4 mr-auto">
               <div class="slider-switch">
                 <input type="checkbox" id="toggle" class="slider-input" />
                 <label for="toggle" class="slider-label"></label>
               </div>
-              <span id="sortstatus" class="h-fit ml-1 text-[#023047] font-nsjp font-medium">新しい順</span>
+              <span
+                id="sortstatus"
+                class="h-fit ml-1 text-[#023047] font-nsjp font-medium"
+                >新しい順</span
+              >
             </div>
             <div id="diaryDivcontainer">
               <div id="searchResultcontainer"></div>
@@ -184,9 +192,9 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       console.log("data:", data);
       const welcomeH1 = document.getElementById("welcome");
       const icon = document.getElementById("my-image");
-      welcomeH1.innerText = `${data.nickname}さん`;
+      welcomeH1.innerText = `${data.nickname}`;
       icon.innerHTML = `
-        <img src="${API_HOST}${data.icon_img}" alt="アイコン画像" class="h-14 w-14 ml-auto rounded-full object-cover">
+        <img src="${API_HOST}${data.icon_img}" alt="アイコン画像" class="h-7 xl:h-14 w-7 xl:w-14 ml-auto rounded-full object-cover">
       `;
       console.log(icon.src);
     });
@@ -201,7 +209,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         const diaryDivcontainer = document.getElementById("diaryDivcontainer");
         diarytDiv.innerHTML = `
           <div
-              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
+              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 mb-2 xl:mb-8"
             >
               <div class="bg-slate-300 w-[50%]">
                 <img
@@ -210,8 +218,8 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
                   class="h-full object-contain ml-auto mr-auto"
                 />
               </div>
-              <div class="bg-white shadow-md h-full xl:h-full w-full p-2 overflow-y-scroll">
-                <span class="block pb-2 w-fit ml-auto text-2xl text-[#023047] font-nsjp font-semibold">${diary.date}</span>${diary.main_text}</div>
+              <div class="bg-white shadow-md h-full xl:h-full w-full p-1 xl:p-2 overflow-y-scroll font-bold text-sm xl:text-xl text-[#023047]">
+                <span class="block pb-1 xl:pb-2 w-fit ml-auto text-base xl:text-2xl text-[#023047] font-zen font-semibold">${diary.date}</span>${diary.main_text}</div>
               </div>
             </div>
           `;
@@ -226,13 +234,13 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         console.log("change");
         if (switchElement.checked) {
           // 昇順に並び替え
-          sortstatus.innerText = "古い順"
+          sortstatus.innerText = "古い順";
           itemsArray.sort((a, b) => {
             return a.id - b.id;
           });
         } else {
           // 降順に並び替え
-          sortstatus.innerText = "新しい順"
+          sortstatus.innerText = "新しい順";
           itemsArray.sort((a, b) => {
             return b.id - a.id;
           });
@@ -321,7 +329,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
             );
             diarytDiv.innerHTML = `
               <div
-                  class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
+                  class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 mb-2 xl:mb-8"
                 >
                   <div class="bg-slate-300 w-[50%]">
                     <img
@@ -330,8 +338,8 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
                       class="h-full object-contain ml-auto mr-auto"
                     />
                   </div>
-                  <div class="bg-white shadow-md h-full xl:h-full w-full p-2 overflow-y-scroll">
-                    <span class="block pb-2 w-fit ml-auto text-2xl text-[#023047] font-nsjp font-semibold">${diary.date}</span>${diary.main_text}</div>
+                  <div class="bg-white shadow-md h-full xl:h-full w-full p-1 xl:p-2 overflow-y-scroll font-bold text-sm xl:text-xl text-[#023047]">
+                    <span class="block pb-1 xl:pb-2 w-fit ml-auto text-base xl:text-2xl text-[#023047] font-zen font-semibold">${diary.date}</span>${diary.main_text}</div>
                   </div>
                 </div>
               `;

@@ -325,7 +325,7 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
               </h3>
               <input
                 type="text"
-                class="border-4 shadow border-slate-600 text-xs xl:text-xl w-44 xl:w-[16vw] rounded"
+                class="border-4 shadow border-slate-600 text-xs xl:text-xl w-44 xl:w-[16vw] rounded font-nsjp"
                 id="taskname"
               />
               <!-- <div id="megs" class="hidden text-red-600">&nbsp;</div> -->
@@ -336,7 +336,7 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
               </h3>
               <input
                 type="date"
-                class="border-4 shadow border-slate-600 text-xs xl:text-xl w-full xl:w-[16vw] rounded"
+                class="border-4 shadow border-slate-600 text-xs xl:text-xl w-full xl:w-[16vw] rounded font-nsjp"
                 id="deadline"
                 name="deadline"
               />
@@ -347,7 +347,7 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
               </h3>
               <input
                 type="text"
-                class="border-4 shadow border-slate-600 text-xs xl:text-xl w-44 xl:w-[16vw] rounded"
+                class="border-4 shadow border-slate-600 text-xs xl:text-xl w-44 xl:w-[16vw] rounded font-nsjp"
                 id="importance"
               />
             </div>
@@ -636,7 +636,7 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
       const taskDiv = document.createElement("div");
       taskDiv.setAttribute(
         "class",
-        "group item p-[5px] border-[1px] border-solid border-[#000] cursor-grab bg-[#f0f0f0] rounded xl:relative"
+        "group item p-[5px] border-[1px] font-nsjp border-solid border-[#000] cursor-grab bg-[#f0f0f0] rounded xl:relative"
       );
       taskDiv.innerHTML = `
       ${task.title}
