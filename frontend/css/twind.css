@@ -2117,11 +2117,6 @@ html {
   border-style: none;
 }
 
-.border-\[\#000\]{
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity));
-}
-
 .border-\[\#126782\]{
   --tw-border-opacity: 1;
   border-color: rgb(18 103 130 / var(--tw-border-opacity));
@@ -2135,6 +2130,11 @@ html {
 .border-\[\#8ECAE6\]{
   --tw-border-opacity: 1;
   border-color: rgb(142 202 230 / var(--tw-border-opacity));
+}
+
+.border-\[\#F0F0F0\]{
+  --tw-border-opacity: 1;
+  border-color: rgb(240 240 240 / var(--tw-border-opacity));
 }
 
 .border-\[\#FB8500\]{
@@ -2185,6 +2185,31 @@ html {
 .bg-\[\#8fc0a9\]{
   --tw-bg-opacity: 1;
   background-color: rgb(143 192 169 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#FAFFA6\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 255 166 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#FBEAA0\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 234 160 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#FCCC98\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 204 152 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#FEAF90\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 175 144 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#FF8F88\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 143 136 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#FFB703\]{
@@ -2602,6 +2627,34 @@ html {
   line-height: 1rem;
 }
 
+.text-\[50px\]{
+  font-size: 50px;
+}
+
+.text-\[60px\]{
+  font-size: 60px;
+}
+
+.text-\[70px\]{
+  font-size: 70px;
+}
+
+.text-\[60\%\]{
+  font-size: 60%;
+}
+
+.text-\[48px\]{
+  font-size: 48px;
+}
+
+.\!text-\[48px\]{
+  font-size: 48px !important;
+}
+
+.\!text-\[36px\]{
+  font-size: 36px !important;
+}
+
 .font-bold{
   font-weight: 700;
 }
@@ -2729,6 +2782,18 @@ html {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-\[\]{
+  color: ;
+}
+
+.text-\[50\]{
+  color: 50;
+}
+
+.text-\[48\]{
+  color: 48;
 }
 
 .underline{
@@ -3169,6 +3234,10 @@ html {
   }
 }
 
+textarea {
+  resize: none;
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;
@@ -3260,10 +3329,6 @@ html {
 
   .xl\:left-0{
     left: 0px;
-  }
-
-  .xl\:left-48{
-    left: 12rem;
   }
 
   .xl\:left-56{
@@ -3599,6 +3664,10 @@ html {
     width: 100%;
   }
 
+  .xl\:w-48{
+    width: 12rem;
+  }
+
   .xl\:scale-125{
     --tw-scale-x: 1.25;
     --tw-scale-y: 1.25;
@@ -3750,6 +3819,16 @@ html {
     line-height: 1.75rem;
   }
 
+  .xl\:text-xs{
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .xl\:text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
   .xl\:font-medium{
     font-weight: 500;
   }
@@ -3762,5 +3841,4 @@ html {
     }
   }
 }
-
 

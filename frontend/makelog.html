@@ -1,5 +1,5 @@
 <!-- 
-Tailwindのおまじない
+Tailwindの起動
 cd frontend
 npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
 -->
@@ -139,7 +139,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
               </button>
             </div>
             <div
-              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
+              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 rounded ml-4 xl:ml-8 mr-4 xl:mr-8 xl:mb-8"
             >
               <div
                 id="figureImage"
@@ -255,7 +255,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
               <div
                id=${
                  "tasktitle" + task.id
-               } class="h-8 xl:h-14 w-[200px] xl:w-[450px] bg-white ml-4 xl:ml-8 mr-2 xl:mr-2 mb-2 xl:mb-4"
+               } class="h-8 xl:h-14 w-[200px] xl:w-[450px] rounded bg-white ml-4 xl:ml-8 mr-2 xl:mr-2 mb-2 xl:mb-4"
               ><span class="text-sm xl:text-2xl font-nsjp font-semibold text-[#023047] items-center justify-center flex h-full">${
                 data.title
               }</span></div>
@@ -266,11 +266,11 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
               </p>
             </div>
             <div
-              class="h-24 xl:h-44 bg-white ml-4 xl:ml-8 mr-4 xl:mr-8 mb-4 xl:mb-8"
+              class="h-24 xl:h-44 rounded bg-white ml-4 xl:ml-8 mr-4 xl:mr-8 mb-4 xl:mb-8"
             >
               <textarea
                 id=${"taxtarea" + task.id}
-                class="border-4 border-slate-600 shadow-md h-full xl:h-full w-full xl:w-full"
+                class="rounded border-4 border-slate-600 shadow-md h-full xl:h-full w-full xl:w-full"
               ></textarea>
             </div>
           `;
