@@ -213,19 +213,24 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
                 すべてのタスク
               </h4>
             </div>
-            <span
-              class="material-symbols-outlined ml-auto mt-4 mr-4 !text-[36px] text-[#023047]"
-            >
-              sort
-            </span>
-            <select
-              id="taskSort"
-              class="border-4 mr-4 mt-4 shadow border-slate-600 text-xs xl:text-sm p-1 h-fit w-44 xl:w-fit rounded font-nsjp"
-              name="taskSort"
-            >
-              <option value="importanceSort">重要度が高い順</option>
-              <option value="dateSort">期限が早い順</option>
-            </select>
+            <div class="ml-auto mr-4 mt-4 flex gap-2">
+              <button class="w-fit h-fit" onclick="showSort()">
+                <span
+                  class="material-symbols-outlined ml-auto !text-[36px] text-[#023047]"
+                >
+                  sort
+                </span>
+              </button>
+              <select
+                id="taskSort"
+                class="hidden border-4 shadow border-slate-600 text-xs xl:text-sm p-1 h-fit w-44 xl:w-fit rounded font-nsjp"
+                name="taskSort"
+                onchange="sortChange(this.value)"
+              >
+                <option value="importanceSort">重要度が高い順</option>
+                <option value="dateSort">期限が早い順</option>
+              </select>
+            </div>
           </div>
           <div class="xl:grid grid-cols-3 h-fit xl:h-[400px]">
             <div
@@ -664,7 +669,7 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
 
   // タスク一覧を取得
   // 未実装:完了したタスクのうち、その日完了したタスクのみを表示する。(id指定で完了日を取得するAPIを実装)
-  const getAllTasks = () => {
+  const getAllTasks = (sortRule) => {
     getAllTasksApi().then((data) => {
       const taskList_today_todo = document.getElementById("box1-1");
       const taskList_today_doing = document.getElementById("box1-2");
@@ -673,14 +678,34 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
       const taskList_all_doing = document.getElementById("box2-2");
       const taskList_all_done = document.getElementById("box2-3");
 
-      // 重要度でソート
-      data.sort((a, b) => a.importance - b.importance);
+      if (sortRule == undefined || sortRule == "importanceSort") {
+        console.log(sortRule);
+        // 重要度でソート(同じ重要度であれば期限が早い順)
+        data.sort((a, b) => {
+          if (a.importance === b.importance) {
+            return new Date(a.due_date) - new Date(b.due_date);
+          }
+          return a.importance - b.importance;
+        });
+      } else {
+        console.log(sortRule);
+        // 期限でソート(同じ期限であれば重要度が高い順)
+        data.sort((a, b) => {
+          const dateA = new Date(a.due_date);
+          const dateB = new Date(b.due_date);
+
+          if (dateA - dateB === 0) {
+            return a.importance - b.importance;
+          }
+          return dateA - dateB;
+        });
+      }
 
       data.forEach((task) => {
         const taskDiv = document.createElement("div");
         taskDiv.setAttribute(
           "class",
-          "group item p-[5px] border-[1px] font-nsjp border-solid border-[#F0F0F0] cursor-grab rounded xl:relative text-[#023047]"
+          "task group item p-[5px] border-[1px] font-nsjp border-solid border-[#F0F0F0] cursor-grab rounded xl:relative text-[#023047]"
         );
 
         if (task.importance == 1) {
@@ -834,5 +859,17 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
   //タスク詳細表示後、編集アイコンをクリックでタスク作成エリアに現在の設定が表示されて書き換えることができる。
   //未実装:タスク並び替え
   //期限の早い順に並び替え(同じ日付の場合は、重要度順に並び替える。)
+  const showSort = () => {
+    document.getElementById("taskSort");
+    document.getElementById("taskSort").style.display = "block";
+  };
+  const sortChange = (e) => {
+    const taskBoxs = document.querySelectorAll(".task");
+    console.log(taskBoxs);
+    for (let i = 0; i < taskBoxs.length; i++) {
+      taskBoxs[i].remove();
+    }
+    getAllTasks(e);
+  };
   //重要度順に並び替え(同じ重要度の場合は、期限の早い順に並び替える。)
 </script>

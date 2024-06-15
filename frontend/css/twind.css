@@ -1661,6 +1661,14 @@ html {
   justify-items: stretch;
 }
 
+.gap-2{
+  gap: 0.5rem;
+}
+
+.gap-4{
+  gap: 1rem;
+}
+
 .space-x-2 > :not([hidden]) ~ :not([hidden]){
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -2187,31 +2195,6 @@ html {
   background-color: rgb(143 192 169 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#FAFFA6\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(250 255 166 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#FBEAA0\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(251 234 160 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#FCCC98\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 204 152 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#FEAF90\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 175 144 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#FF8F88\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 143 136 / var(--tw-bg-opacity));
-}
-
 .bg-\[\#FFB703\]{
   --tw-bg-opacity: 1;
   background-color: rgb(255 183 3 / var(--tw-bg-opacity));
@@ -2225,11 +2208,6 @@ html {
 .bg-\[\#e7e0ca\]{
   --tw-bg-opacity: 1;
   background-color: rgb(231 224 202 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#f0f0f0\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(240 240 240 / var(--tw-bg-opacity));
 }
 
 .bg-\[rgb\(255\2c 0\2c 0\)\]{
@@ -2572,6 +2550,10 @@ html {
   line-height: 1 !important;
 }
 
+.\!text-\[36px\]{
+  font-size: 36px !important;
+}
+
 .text-2xl{
   font-size: 1.5rem;
   line-height: 2rem;
@@ -2625,34 +2607,6 @@ html {
 .text-xs{
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-\[50px\]{
-  font-size: 50px;
-}
-
-.text-\[60px\]{
-  font-size: 60px;
-}
-
-.text-\[70px\]{
-  font-size: 70px;
-}
-
-.text-\[60\%\]{
-  font-size: 60%;
-}
-
-.text-\[48px\]{
-  font-size: 48px;
-}
-
-.\!text-\[48px\]{
-  font-size: 48px !important;
-}
-
-.\!text-\[36px\]{
-  font-size: 36px !important;
 }
 
 .font-bold{
@@ -2782,18 +2736,6 @@ html {
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-\[\]{
-  color: ;
-}
-
-.text-\[50\]{
-  color: 50;
-}
-
-.text-\[48\]{
-  color: 48;
 }
 
 .underline{
@@ -3664,10 +3606,6 @@ textarea {
     width: 100%;
   }
 
-  .xl\:w-48{
-    width: 12rem;
-  }
-
   .xl\:scale-125{
     --tw-scale-x: 1.25;
     --tw-scale-y: 1.25;
@@ -3814,19 +3752,14 @@ textarea {
     line-height: 1.75rem;
   }
 
-  .xl\:text-xl{
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
-  .xl\:text-xs{
-    font-size: 0.75rem;
-    line-height: 1rem;
-  }
-
   .xl\:text-sm{
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .xl\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 
   .xl\:font-medium{
