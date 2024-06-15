@@ -1,5 +1,5 @@
 <!-- 
-Tailwindのおまじない
+Tailwindの起動
 cd frontend
 npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
 -->
@@ -209,7 +209,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         const diaryDivcontainer = document.getElementById("diaryDivcontainer");
         diarytDiv.innerHTML = `
           <div
-              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 mb-2 xl:mb-8"
+              class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 rounded bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 mb-2 xl:mb-8"
             >
               <div class="bg-slate-300 w-[50%]">
                 <img
@@ -329,7 +329,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
             );
             diarytDiv.innerHTML = `
               <div
-                  class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 mb-2 xl:mb-8"
+                  class="flex border-4 border-slate-600 shadow-md h-32 xl:h-80 rounded bg-slate-300 ml-4 xl:ml-8 mr-4 xl:mr-8 mb-2 xl:mb-8"
                 >
                   <div class="bg-slate-300 w-[50%]">
                     <img
@@ -350,6 +350,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     };
 
     //未実装:日記の削除
+    
 
     //未実装:日記の更新
     //makelogページをコピーし、編集ページとして、現在の入力が反映される。
