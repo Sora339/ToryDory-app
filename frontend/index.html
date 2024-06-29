@@ -128,7 +128,7 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
                 />
               </div>
               <div
-                class="box bg-white h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
+                class="box bg-slate-100 h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
                 id="box1-1"
                 ondrop="drop(event)"
                 ondragover="allowDrop(event)"
@@ -159,7 +159,7 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
                 />
               </div>
               <div
-                class="box bg-white h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
+                class="box bg-slate-100 h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
                 id="box1-2"
                 ondrop="drop(event)"
                 ondragover="allowDrop(event)"
@@ -188,7 +188,7 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
                 />
               </div>
               <div
-                class="box bg-white h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
+                class="box bg-slate-100 h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
                 id="box1-3"
                 ondrop="drop(event)"
                 ondragover="allowDrop(event)"
@@ -227,6 +227,7 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
                 name="taskSort"
                 onchange="sortChange(this.value)"
               >
+                <option value="default" selected hidden>整頓順序を選択</option>
                 <option value="importanceSort">重要度が高い順</option>
                 <option value="dateSort">期限が早い順</option>
               </select>
@@ -256,7 +257,7 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
                 />
               </div>
               <div
-                class="box bg-white h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
+                class="box bg-slate-100 h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
                 id="box2-1"
                 ondrop="drop(event)"
                 ondragover="allowDrop(event)"
@@ -287,7 +288,7 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
                 />
               </div>
               <div
-                class="box bg-white h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
+                class="box bg-slate-100 h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
                 id="box2-2"
                 ondrop="drop(event)"
                 ondragover="allowDrop(event)"
@@ -316,7 +317,7 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
                 />
               </div>
               <div
-                class="box bg-white h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
+                class="box bg-slate-100 h-[200px] xl:h-[280px] m-6 mt-2 xl:m-6 rounded overflow-y-scroll"
                 id="box2-3"
                 ondrop="drop(event)"
                 ondragover="allowDrop(event)"
@@ -381,11 +382,11 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
                 class="border-4 shadow border-slate-600 text-xs xl:text-xl w-44 xl:w-[16vw] rounded font-nsjp"
                 name="importance"
               >
-                <option value="1">最高</option>
-                <option value="2">高</option>
-                <option value="3">中</option>
-                <option value="4">低</option>
-                <option value="5">最低</option>
+                <option value="1">Very High</option>
+                <option value="2">High</option>
+                <option value="3">Middle</option>
+                <option value="4">Low</option>
+                <option value="5">Very Low</option>
               </select>
             </div>
           </div>
@@ -791,15 +792,15 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
         const taskbox = document.getElementById(taskId);
         let showImportance = 0;
         if (data.importance == 1) {
-          showImportance = "最高";
+          showImportance = "Very High";
         } else if (data.importance == 2) {
-          showImportance = "高";
+          showImportance = "High";
         } else if (data.importance == 3) {
-          showImportance = "中";
+          showImportance = "Middle";
         } else if (data.importance == 4) {
-          showImportance = "低";
+          showImportance = "Low";
         } else if (data.importance == 5) {
-          showImportance = "最低";
+          showImportance = "Very Low";
         } else {
           showImportance = "なし";
         }
@@ -860,8 +861,9 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
   //未実装:タスク並び替え
   //期限の早い順に並び替え(同じ日付の場合は、重要度順に並び替える。)
   const showSort = () => {
-    document.getElementById("taskSort");
-    document.getElementById("taskSort").style.display = "block";
+    const sortSelector = document.getElementById("taskSort");
+    sortSelector.value = 'default';
+    sortSelector.style.display = "block";
   };
   const sortChange = (e) => {
     const taskBoxs = document.querySelectorAll(".task");
@@ -870,6 +872,7 @@ npx tailwindcss -i ./css/style.css -o ./css/twind.css --watch
       taskBoxs[i].remove();
     }
     getAllTasks(e);
+    document.getElementById("taskSort").style.display = "none";
   };
   //重要度順に並び替え(同じ重要度の場合は、期限の早い順に並び替える。)
 </script>

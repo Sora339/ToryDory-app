@@ -78,7 +78,7 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       class="mt-2 xl:mt-0 ml-0 xl:ml-28 mr-0 xl:mr-28 mb-6 xl:mb-8"
     >
       <div
-        class="bg-[#8fc0a9] shadow-lg pb-6 xl:pb-20 mr-2 xl:mr-0 ml-2 xl:ml-0 mb-4 xl:mb-10 rounded xl:rounded-b"
+        class="bg-[#8fc0a9] shadow-lg pb-6 xl:pb-20 mr-2 xl:mr-0 ml-2 xl:ml-0 mb-4 xl:mb-10 rounded xl:rounded-b xl:rounded-t-none"
       >
         <div class="xl:ml-4 xl:mr-4 pt-2 xl:pt-4">
           <div class="ml-2 xl:ml-4 mb-2 xl:mb-4">
@@ -125,6 +125,18 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
               >
                 今日の日記
               </p>
+              <p
+                class="font-nsjp font-semibold text-[#023047] xl:text-xl ml-4 xl:ml-8 mb-1 xl:mb-3"
+              >
+                天気予報
+              </p>
+              <select
+                id="city-select"
+                class="text-lg p-1 rounded ml-3 border-slate-600 border-4"
+                onchange="selectCity(this)"
+              >
+                <!-- データはJavaScriptで動的に追加されます -->
+              </select>
               <button
                 id="submit"
                 class="shadow-md w-fit xl:w-fit p-[0.5%] xl:p-[0.1vw] pl-[2%] xl:pl-[1vw] pr-[2%] xl:pr-[1vw] pt-0 mb-1 xl:mb-2 ml-2 xl:ml-4 bg-[#FFB703] border-4 border-[#FB8500] xl:text-2xl font-nsjp font-semibold text-[#023047] rounded"
@@ -172,7 +184,9 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
               <textarea
                 name="todo1"
                 id="output-area"
-                class="shadow-md h-full xl:h-full w-full overflow-y-scroll"
+                class="shadow-md p-2 h-full xl:h-full w-full overflow-y-scroll"
+                placeholder="上でまとめたことを元に、今日の日記を書きましょう。「Geminiで生成」を押すと、日記を自動で生成できます。ここにGeminiへのリクエストを書くこともできます。例: 陽気な文体にして。"
+                ;
               ></textarea>
             </div>
           </div>
@@ -270,7 +284,8 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
             >
               <textarea
                 id=${"taxtarea" + task.id}
-                class="rounded border-4 border-slate-600 shadow-md h-full xl:h-full w-full xl:w-full"
+                class="rounded border-4 p-2 border-slate-600 shadow-md h-full xl:h-full w-full xl:w-full"
+                placeholder="タスクについてのコメントを書きましょう。"
               ></textarea>
             </div>
           `;
@@ -328,10 +343,52 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
     };
 
     //天気API
-    // APIのエンドポイント
-    const apiUrl = "https://weather.tsukumijima.net/api/forecast/city/140010";
+    //都市の選択
+    let storedValue = localStorage.getItem("selectedOption");
+    let city = "";
+    let apiUrl =
+      "https://weather.tsukumijima.net/api/forecast/city/" + storedValue;
+    // city.json ファイルの URL
+    const cityDataURL = "./city.json";
+    // Fetch を使って city.json を取得し、プルダウンメニューに追加する
+    fetch(cityDataURL)
+      .then((response) => response.json())
+      .then((data) => {
+        const citySelect = document.getElementById("city-select");
+        data.city.map((item) => {
+          const option = document.createElement("option");
+          option.value = item.id;
+          option.textContent = item.title;
+          citySelect.appendChild(option);
+          if (option.value == storedValue) {
+            city = option.textContent;
+            getWeatherForecast();
+          }
+        });
+        console.log(city);
+        console.log(storedValue);
+        let selectElement = document.getElementById("city-select");
+        for (let i = 0; i < selectElement.options.length; i++) {
+          if (selectElement.options[i].value === storedValue) {
+            selectElement.value = storedValue;
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("都市データの取得に失敗しました。", error);
+      });
     let weathertext = "";
     let tomorrowweathertext = "";
+    const selectCity = (e) => {
+      // APIのエンドポイント
+      let selectedIndex = e.selectedIndex;
+      city = e.options[selectedIndex].text;
+      localStorage.setItem("selectedOption", e.value);
+      console.log(city);
+      apiUrl = "https://weather.tsukumijima.net/api/forecast/city/" + e.value;
+      console.log(apiUrl);
+      getWeatherForecast();
+    };
 
     // Fetch APIを使用してデータをリクエストする関数
     async function getWeatherForecast() {
@@ -353,11 +410,11 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
 
         // forecastの最初の要素のtelopをロギング
         if (data.forecasts && data.forecasts.length > 0) {
-          console.log("神奈川の天気は" + data.forecasts[0].telop);
+          console.log(city + "の天気は" + data.forecasts[0].telop);
         } else {
           console.log("Forecast data is not available.");
         }
-        weathertext = "神奈川の天気は" + data.forecasts[0].telop;
+        weathertext = city + "の天気は" + data.forecasts[0].telop;
         tomorrowweathertext =
           "明日の天気は" +
           data.forecasts[1].telop +
@@ -371,9 +428,6 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
         console.error("Error fetching weather forecast data: ", error);
       }
     }
-
-    // 関数を呼び出して天気データを取得
-    getWeatherForecast();
   </script>
 
   <script type="importmap">
@@ -413,9 +467,12 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       }
       console.log(alltext);
       const display = document.getElementById("output-area");
+      const userRequest = display.value;
+      console.log(userRequest);
 
       const prompt =
         "以下の文章を日記の体裁で整えてください。日付は入れないでください。" +
+        userRequest +
         "\n" +
         weathertext +
         alltext +
@@ -424,8 +481,9 @@ npx tailwindcss -i ./css/style.css -o ./css//twind.css --watch
       const result = await model.generateContent(prompt);
       const response = await result.response;
       const text = response.text();
+      console.log(prompt);
       console.log(text);
-      display.innerText = text;
+      display.value = text;
     }
 
     const myfunc = document.getElementById("submit");
